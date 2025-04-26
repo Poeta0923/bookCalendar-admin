@@ -1,0 +1,75 @@
+<h1 class="main-title">회원 관리</h1>
+
+<!--member 테이블 조회 결과 항목이 존재할 경우 테이블 표시-->
+<% if(member.length !== 0){ %>
+
+<form action="/member/search/1" method="post">
+    <div class="search-form">
+        <input type="text" id="searchTerm" name="searchTerm">&nbsp;<button type="submit" class="search-button">검색</button>
+    </div>
+</form>
+
+<table>
+    <thead>
+        <!--테이블 항목 <th> 태그는 항목 명-->
+        <tr>
+            <th>nickName</th>
+            <th>birth</th>
+            <th>phoneNumber</th>
+            <th>genre</th>
+            <th>job</th>
+            <th>completion</th>
+            <th>rank</th>
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    <!--<tr> 태그는 행, <td> 태그는 데이터. member.js에서 context로 전달된 member 테이블의 요소들을 데이터가 끝날 때까지 삽입-->
+    <tbody>
+        <!--페이징 기능 로직-->
+        <% var start = 10 * (currentPage - 1);
+        var end = Math.min(start + columns, member.length);
+        for(var i = start; i < end; i++){ %>
+        <tr>
+            <td><%= member[i].nickName %></td>
+            <td><%= member[i].birth.toLocaleDateString('en-CA').replace(/\//g, '-') %></td>
+            <td><%= member[i].phoneNumber %></td>
+            <td><%= member[i].genre %></td>
+            <td><%= member[i].job %></td>
+            <td><%= member[i].completion %></td>
+            <td><%= member[i].rank %></td>
+      
+            <!--해당 행의 회원 삭제 요청 버튼. primary key로 지정된 memberId를 전달-->
+            <td><a href="/member/delete/<%= member[i].memberId %>" style="text-decoration: none;" onclick="return confirm('정말로 삭제하시겠습니까?');"><span class="button-icon">❌</span></a></td>
+        </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<!--회원 관리 화면 현재 페이지와 다른 페이지들 표시-->
+<div class="number">
+    <% var k = 1; 
+    while(k <= pageNum){ 
+        if(k == currentPage){%>
+            <span style="font-weight : bold;"><%=k%></span> &nbsp;&nbsp;
+        <% } else { 
+            <!--url 요청이 search일 경우 post 방식으로 다른 페이지 요청-->
+            if(requestIsSearch===true){%>
+                <form action="/member/search/<%=k%>" method="post" style="display:inline;">
+                    <input type="hidden" name="searchTerm" value="<%=searchTerm%>">
+                    <span style="cursor: pointer; color: blue; text-decoration: underline;" onclick="this.parentNode.submit(); return false;">
+                        <%=k%>
+                    </span> &nbsp;&nbsp;
+                </form> 
+            <% } else { %>
+                <span><a href="/member/<%=k%>"><%=k%></a></span> &nbsp;&nbsp;
+            <% }
+        } %>
+    <% k = k + 1;} %>
+</div>
+
+<!--회원 테이블에 데이터가 없을 경우 출력-->
+<% } else { %>
+</table>
+<p>자료가 없습니다.</p>
+<% } %>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book calendar 관리자 웹</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <header class="main-header">
+                <div class="user-info">
+                    <span class="username"><%=who%></span>
+                    <a href="/logout"><button class="logout-button">로그아웃</button></a>
+                    <button class="change-password-button">비밀번호 변경</button>
+                </div>
+            </header>
+            <div class="content-area">
+                <h1 class="main-title">Book Calendar 관리자 웹</h1>
+            </div>
+            <img src="/images/logo.png" alt="배경 이미지" class="logo-image">
+            <div class="button-container">
+                <button class="admin-button" onclick="window.location.href='/member/1'">
+                  <span class="button-icon">🤵</span> 회원 관리
+                </button>
+                <button class="admin-button" onclick="window.location.href='/post/1'">
+                  <span class="button-icon">📑</span> 게시물 관리
+                </button>
+                <button class="admin-button" onclick="window.location.href='/comment/1'">
+                  <span class="button-icon">💬</span> 댓글 관리
+                </button>
+                <button class="admin-button" onclick="window.location.href='/reportedPost/1'">
+                  <span class="button-icon">🚫</span> 신고 내역 관리
+                </button>
+                <button class="admin-button">
+                  <span class="button-icon">📊</span> 통계 확인
+                </button>
+                <button class="admin-button">
+                  <span class="button-icon">🤖</span> AI 관리
+                </button>
+              </div>
+        </main>
+    </div>
+</body>
+</html>

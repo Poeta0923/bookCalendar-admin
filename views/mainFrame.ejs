@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book calendar 관리자 웹</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="/main"><h2 class="logo">book calendar</h2>
+                <span class="admin-text">admin</span></a>
+            </div>
+            <ul class="menu">
+                <a href="/member/1"><li class="menu-item">🤵 회원 관리</li></a>
+                <a href="/post/1"><li class="menu-item">📑 게시물 관리</li></a>
+                <a href="/comment/1"><li class="menu-item">💬 댓글 관리</li></a>
+                <li class="menu-not-item">🚫 신고 내역 관리
+                    <ul>
+                        <a href="/reportedPost/1"><li class="sub-menu-item">📑 신고 게시물 관리</li></a>
+                        <a href="/reportedComment/1"><li class="sub-menu-item">💬 신고 댓글 관리</li></a>
+                    </ul>
+                </li>
+                <li class="menu-not-item">📊 통계 확인
+                    <ul>
+                        <li class="sub-menu-item">📚 등록 도서량</li>
+                        <li class="sub-menu-item">📝 등록 독후감</li>
+                        <li class="sub-menu-item">📰 등록 게시물</li>
+                        <li class="sub-menu-item">💬 등록 댓글</li>
+                        <li class="sub-menu-item">🤵 사용자 수</li>
+                    </ul>
+                </li>
+                <li class="menu-not-item">🤖 AI 관리
+                    <ul>
+                        <li class="sub-menu-item">📈 AI 모델 성능 화인</li>
+                        <li class="sub-menu-item">🔌 AI 모델 버전 선택</li>
+                        <li class="sub-menu-item">🔍 AI 에러 기록</li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div class="user-info">
+                    <span class="username"><%=who%></span>
+                    <a href="/logout"><button class="logout-button">로그아웃</button></a>
+                    <button class="change-password-button">비밀번호 변경</button>
+                </div>
+            </header>
+            <%- include(body) %>
+        </main>
+    </div>
+</body>
+</html>
