@@ -11,6 +11,11 @@ router.get('/:currentPage', (req, res)=>{
     post.view(req, res);
 })
 
+router.get('/:currentPage/:postId', (req, res)=>{
+    logger.info(`GET /post/${req.params.currentPage}/${req.params.postId}`);
+    post.detail(req, res);
+})
+
 //게시물 삭제 버튼 클릭 시 요청 라우팅
 router.get('/delete/:postId', (req, res)=>{
     logger.info(`GET /post/delete/${req.params.postId}`);
@@ -21,6 +26,11 @@ router.get('/delete/:postId', (req, res)=>{
 router.post('/search/:currentPage', (req, res)=>{
     logger.info(`POST /post/search/${req.params.currentPage}`);
     post.search(req, res);
+})
+
+router.post('/search/:currentPage/:postId', (req, res)=>{
+    logger.info(`POST /post/search/${req.params.currentPage}/${req.params.postId}`);
+    post.searchDetail(req, res);
 })
 
 module.exports = router;
