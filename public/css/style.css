@@ -326,7 +326,7 @@ td button:hover {
     opacity: 0.8;
 }
 
-.comment-button {
+.table-button {
     padding: 3px 5px; /* 안쪽 여백을 늘려 높이와 너비 확장 (가로/세로 비율 유지) */
     background-color: #f44336; /* 기존 배경색 유지 */
     color: white; /* 기존 글자색 유지 */
@@ -335,6 +335,6 @@ td button:hover {
     cursor: pointer; /* 마우스 커서 변경 유지 */
 }
 
-.comment-button:hover {
+.table-button:hover {
     opacity: 0.8;
 }

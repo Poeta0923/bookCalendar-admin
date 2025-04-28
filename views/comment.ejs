@@ -1,13 +1,10 @@
-<% if(requestIsReport===false) { %>
-    <h1 class="main-title">댓글 관리</h1>
-<% } else { %>
-    <h1 class="main-title">신고 댓글 관리</h1>
-<% } %>
+<h1 class="main-title">신고 댓글 관리</h1>
+
 
 <!--comment 테이블 조회 결과 항목이 존재할 경우 테이블 표시-->
 <% if(comment.length !== 0){ %>
 
-<form action="/comment/search/1" method="post">
+<form action="/reportedComment/search/1" method="post">
     <div class="search-form">
         <input type="text" id="searchTerm" name="searchTerm">&nbsp;<button type="submit" class="search-button">검색</button>
     </div>
@@ -33,14 +30,19 @@
         var end = Math.min(start + columns, comment.length);
         for(var i = start; i < end; i++){ %>
         <tr>
-            <td><%= comment[i].title %></td>
+            <!--게시물 확인 버튼 클릭 시 게시물 관리 페이지로 이동-->
+            <td>
+              <div class="detail-form">
+                <%= comment[i].title %><a href="/post/1/<%=comment[i].postId%>"><button class="detail-button">게시물 상세정보</button></a>
+              </div>
+            </td>
             <td><%= comment[i].nickName %></td>
             <td><%= comment[i].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></td>
             <td><%= comment[i].contents %></td>
             <td><%= comment[i].reportCount %></td>
       
             <!--해당 행의 회원 삭제 요청 버튼. primary key로 지정된 commentId를 전달-->
-            <td><a href="/comment/delete/<%= comment[i].commentId %>" style="text-decoration: none;" onclick="return confirm('정말로 삭제하시겠습니까?');"><span class="button-icon">❌</span></a></td>
+            <td><a href="/reportedComment/delete/<%= comment[i].commentId %>"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button></a></td>
         </tr>
         <% } %>
     </tbody>
@@ -54,34 +56,15 @@
       <span style="font-weight : bold;"><%=k%></span> &nbsp;&nbsp;
     <% } else { 
       <!--url 요청이 search일 경우 post 방식으로 다른 페이지 요청-->
-      if(requestIsSearch===true){ 
-
-        <!--댓글 관리 페이지일 경우-->
-        if(requestIsReport===false){%>
-          <form action="/comment/search/<%=k%>" method="post" style="display:inline;">
-            <input type="hidden" name="searchTerm" value="<%=searchTerm%>">
-            <span style="cursor: pointer; color: blue; text-decoration: underline;" onclick="this.parentNode.submit(); return false;">
-            <%=k%>
-            </span> &nbsp;&nbsp;
-          </form> 
-        <!--댓글 신고 관리 페이지일 경우-->
-        <% } else { %>
+      if(requestIsSearch===true){ %>
           <form action="/reportedComment/search/<%=k%>" method="post" style="display:inline;">
             <input type="hidden" name="searchTerm" value="<%=searchTerm%>">
             <span style="cursor: pointer; color: blue; text-decoration: underline;" onclick="this.parentNode.submit(); return false;">
             <%=k%>
             </span> &nbsp;&nbsp;
           </form> 
-        <% } %>
-
       <% } else { %>
-        <!--댓글 관리 페이지일 경우-->
-        <% if(requestIsReport===false){ %>
-          <span><a href="/comment/<%=k%>"><%=k%></a></span> &nbsp;&nbsp;
-        <!--댓글 신고 관리 페이지일 경우-->
-        <% } else { %>
           <span><a href="/reportedComment/<%=k%>"><%=k%></a></span> &nbsp;&nbsp;
-        <% } %>
       <% }
     } %>
   <% k = k + 1;} %>
