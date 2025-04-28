@@ -37,4 +37,14 @@ router.post('/search/:currentPage/:postId/deletePost', (req, res)=>{
     post.deleteSearchPost(req, res);
 })
 
+router.get('/:currentPage/:postId/:commentId/deleteComment', (req, res)=>{
+    logger.info(`GET /post/${req.params.currentPage}/${req.params.postId}/${req.params.commentId}/deleteComment`);
+    post.deleteComment(req, res);
+})
+
+router.post('/search/:currentPage/:postId/:commentId/deleteComment', (req, res)=>{
+    logger.info(`GET /post/search/${req.params.currentPage}/${req.params.postId}/${req.params.commentId}/deleteComment`);
+    post.deleteSearchComment(req, res);
+})
+
 module.exports = router;

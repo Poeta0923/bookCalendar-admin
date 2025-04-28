@@ -209,7 +209,40 @@
                 <td><%= comment[i].reportCount %></td>
           
                 <!--해당 행의 댓글 삭제 요청 버튼. primary key로 지정된 commentId를 전달-->
-                <td><a href="/comment/delete/<%= comment[i].commentId %>" style="text-decoration: none;" onclick="return confirm('정말로 삭제하시겠습니까?');"><span class="button-icon">❌</span></a></td>
+                <td>
+
+                  <!--신고 게시물 관리 페이지일 경우-->
+                  <% if (requestIsReport===true){ %>
+
+                    <!--신고 게시물 관리 페이지의 검색 결과일 경우-->
+                    <% if (requestIsSearch===true){ %>
+                      <form action="/reportedPost/search/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment" method="post">
+                        <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="comment-button">댓글 삭제</button>
+                      </form>
+                    <% } 
+
+                    <!--신고 게시물 관리 페이지에서 검색 결과가 아닐 경우-->
+                    else { %>
+                      <a href="/reportedPost/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="comment-button">댓글 삭제</button></a>
+                    <% } %>
+                  <% } 
+
+                  <!--게시물 관리 페이지일 경우-->>
+                  else { %>
+
+                    <!--게시물 관리 페이지의 검색 결과일 경우-->
+                    <% if (requestIsSearch===true){ %>
+                      <form action="/post/search/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment" method="post">
+                        <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="comment-button">댓글 삭제</button>
+                      </form>
+                    <% } 
+              
+                    <!--게시물 관리 페이지에서 검색 결과가 아닐 경우-->
+                    else { %>
+                      <a href="/post/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="comment-button">댓글 삭제</button></a>
+                    <% } %>
+                  <% } %>
+                </td>
             </tr>
             <% } %>
         </tbody>
