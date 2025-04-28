@@ -9,11 +9,19 @@
     <!--post 테이블 조회 결과 항목이 존재할 경우 테이블 표시-->
     <% if(post.length !== 0){ %>
   
+    <% if (requestIsReport===true){ %>
+      <form action="/reportedPost/search/1" method="post">
+        <div class="search-form">
+            <input type="text" id="searchTerm" name="searchTerm">&nbsp;<button type="submit" class="search-button">검색</button>
+        </div>
+      </form>
+    <% } else { %>
     <form action="/post/search/1" method="post">
       <div class="search-form">
           <input type="text" id="searchTerm" name="searchTerm">&nbsp;<button type="submit" class="search-button">검색</button>
       </div>
     </form>
+    <% } %>
   
     <table>
       <thead>
@@ -134,6 +142,46 @@
   <div class="right-panel">
     <% if (postDetail===true) { %>
       <h1 class="main-title"><%= postData[0].title %></h1>
+
+      <!--신고 게시물 관리 페이지일 경우-->
+      <% if (requestIsReport===true){ %>
+
+        <!--신고 게시물 관리 페이지의 검색 결과일 경우-->
+        <% if (requestIsSearch===true){ %>
+          <form action="/reportedPost/search/<%=currentPage%>/<%=postData[0].postId%>/deletePost" method="post">
+            <div class="delete-form">
+                <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="delete-button">게시물 삭제</button>
+            </div>
+          </form>
+        <% } 
+
+        <!--신고 게시물 관리 페이지에서 검색 결과가 아닐 경우-->
+        else { %>
+          <a href="/reportedPost/<%=currentPage%>/<%=postData[0].postId%>/deletePost"><button class="delete-button">게시물 삭제</button></a>
+        <% } %>
+      <% } 
+
+      <!--게시물 관리 페이지일 경우-->>
+      else { %>
+
+        <!--게시물 관리 페이지의 검색 결과일 경우-->
+        <% if (requestIsSearch===true){ %>
+          <form action="/post/search/<%=currentPage%>/<%=postData[0].postId%>/deletePost" method="post">
+            <div class="delete-form">
+                <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="delete-button">게시물 삭제</button>
+            </div>
+          </form>
+        <% } 
+        
+        <!--게시물 관리 페이지에서 검색 결과가 아닐 경우-->
+        else { %>
+          <a href="/post/<%=currentPage%>/<%=postData[0].postId%>/deletePost"><button class="delete-button">게시물 삭제</button></a>
+        <% } %>
+      <% } %>
+
+
+
+
       <p>date : <%= postData[0].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></p>
       <p>reportCount : <%= postData[0].reportCount %></p>
       <p>contents : <%= postData[0].contents %></p>

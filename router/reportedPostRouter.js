@@ -16,12 +16,6 @@ router.get('/:currentPage/:postId', (req, res)=>{
     reportedPost.detail(req, res);
 })
 
-//신고 게시물 삭제 버튼 클릭 시 요청 라우팅
-router.get('/delete/:postId', (req, res)=>{
-    logger.info(`GET /reportedPost/delete/${req.params.postId}`);
-    reportedPost.delete(req, res);
-})
-
 //신고 게시물 검색란에 정보 기입 후 검색버튼 클릭 시 요청 라우팅
 router.post('/search/:currentPage', (req, res)=>{
     logger.info(`POST /reportedPost/search/${req.params.currentPage}`);
@@ -32,5 +26,16 @@ router.post('/search/:currentPage/:postId', (req, res)=>{
     logger.info(`POST /reportedPost/search/${req.params.currentPage}/${req.params.postId}`);
     reportedPost.searchDetail(req, res);
 })
+
+router.get('/:currentPage/:postId/deletePost', (req, res)=>{
+    logger.info(`GET /reportedPost/${req.params.currentPage}/${req.params.postId}/deletePost`);
+    reportedPost.deletePost(req, res);
+})
+
+router.post('/search/:currentPage/:postId/deletePost', (req, res)=>{
+    logger.info(`GET /reportedPost/search/${req.params.currentPage}/${req.params.postId}/deletePost`);
+    reportedPost.deleteSearchPost(req, res);
+})
+
 
 module.exports=router;
