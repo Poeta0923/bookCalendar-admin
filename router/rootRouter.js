@@ -13,19 +13,19 @@ router.get('/', (req, res)=>{
 
 //'login' 버튼 클릭 시 요청 라우팅
 router.post('/login', (req, res)=>{
-    logger.info(`POST /login`);
+    logger.info(`POST /admin/login`);
     root.login(req, res);
 })
 
 //'/logout' 요청 라우팅
 router.get('/logout', (req, res)=>{
-    logger.info(`GET /logout`);
+    logger.info(`GET /admin/logout`);
     root.logout(req, res);
 })
 
 //'/main' 요청 라우팅
 router.get('/main', (req, res)=>{
-    logger.info(`GET /main`);
+    logger.info(`GET /admin/main`);
     root.main(req, res);
 })
 

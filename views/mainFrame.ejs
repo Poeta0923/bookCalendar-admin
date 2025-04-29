@@ -10,16 +10,16 @@
     <div class="container">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <a href="/main"><h2 class="logo">book calendar</h2>
+                <a href="/admin/main"><h2 class="logo">book calendar</h2>
                 <span class="admin-text">admin</span></a>
             </div>
             <ul class="menu">
-                <a href="/member/1"><li class="menu-item">🤵 회원 관리</li></a>
-                <a href="/post/1"><li class="menu-item">📑 게시물 관리</li></a>
+                <a href="/admin/member/1"><li class="menu-item">🤵 회원 관리</li></a>
+                <a href="/admin/post/1"><li class="menu-item">📑 게시물 관리</li></a>
                 <li class="menu-not-item">🚫 신고 내역 관리
                     <ul>
-                        <a href="/reportedPost/1"><li class="sub-menu-item">📑 신고 게시물 관리</li></a>
-                        <a href="/reportedComment/1"><li class="sub-menu-item">💬 신고 댓글 관리</li></a>
+                        <a href="/admin/reportedPost/1"><li class="sub-menu-item">📑 신고 게시물 관리</li></a>
+                        <a href="/admin/reportedComment/1"><li class="sub-menu-item">💬 신고 댓글 관리</li></a>
                     </ul>
                 </li>
                 <li class="menu-not-item">📊 통계 확인
@@ -47,7 +47,7 @@
             <header class="main-header">
                 <div class="user-info">
                     <span class="username"><%=who%></span>
-                    <a href="/logout"><button class="logout-button">로그아웃</button></a>
+                    <a href="/admin/logout"><button class="logout-button">로그아웃</button></a>
                     <button class="change-password-button">비밀번호 변경</button>
                 </div>
             </header>

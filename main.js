@@ -40,13 +40,13 @@ var aiRouter = require('./router/aiRouter'); */
 //정적 파일들이 위치한 폴더 지정
 app.use(express.static('public'));
 
-app.use('/', rootRouter);
-app.use('/member', memberRouter);
-app.use('/post', postRouter);
-app.use('/reportedPost', reportedPostRouter);
-app.use('/reportedComment', reportedCommentRouter);
-/*app.use('/satistics', satisticsRouter);
-app.use('/ai', aiRouter);*/
+app.use('/admin', rootRouter);
+app.use('/admin/member', memberRouter);
+app.use('/admin/post', postRouter);
+app.use('/admin/reportedPost', reportedPostRouter);
+app.use('/admin/reportedComment', reportedCommentRouter);
+/*app.use('/admin/satistics', satisticsRouter);
+app.use('/admin/ai', aiRouter);*/
 
 //favicon 파일이 없기 때문에 브라우저가 요청 시 에러 처리.
 app.get('/favicon.ico', (req, res)=>res.writeHead(404));

@@ -7,43 +7,43 @@ var post = require('../lib/post');
 
 //게시물 관리 화면 요청 라우팅
 router.get('/:currentPage', (req, res)=>{
-    logger.info(`GET /post/${req.params.currentPage}`);
+    logger.info(`GET /admin/post/${req.params.currentPage}`);
     post.view(req, res);
 })
 
 router.get('/:currentPage/:postId', (req, res)=>{
-    logger.info(`GET /post/${req.params.currentPage}/${req.params.postId}`);
+    logger.info(`GET /admin/post/${req.params.currentPage}/${req.params.postId}`);
     post.detail(req, res);
 })
 
 //게시물 검색란에 정보 기입 후 검색버튼 클릭 시 요청 라우팅
 router.post('/search/:currentPage', (req, res)=>{
-    logger.info(`POST /post/search/${req.params.currentPage}`);
+    logger.info(`POST /admin/post/search/${req.params.currentPage}`);
     post.search(req, res);
 })
 
 router.post('/search/:currentPage/:postId', (req, res)=>{
-    logger.info(`POST /post/search/${req.params.currentPage}/${req.params.postId}`);
+    logger.info(`POST /admin/post/search/${req.params.currentPage}/${req.params.postId}`);
     post.searchDetail(req, res);
 })
 
 router.get('/:currentPage/:postId/deletePost', (req, res)=>{
-    logger.info(`GET /post/${req.params.currentPage}/${req.params.postId}/deletePost`);
+    logger.info(`GET /admin/post/${req.params.currentPage}/${req.params.postId}/deletePost`);
     post.deletePost(req, res);
 })
 
 router.post('/search/:currentPage/:postId/deletePost', (req, res)=>{
-    logger.info(`GET /post/search/${req.params.currentPage}/${req.params.postId}/deletePost`);
+    logger.info(`GET /admin/post/search/${req.params.currentPage}/${req.params.postId}/deletePost`);
     post.deleteSearchPost(req, res);
 })
 
 router.get('/:currentPage/:postId/:commentId/deleteComment', (req, res)=>{
-    logger.info(`GET /post/${req.params.currentPage}/${req.params.postId}/${req.params.commentId}/deleteComment`);
+    logger.info(`GET /admin/post/${req.params.currentPage}/${req.params.postId}/${req.params.commentId}/deleteComment`);
     post.deleteComment(req, res);
 })
 
 router.post('/search/:currentPage/:postId/:commentId/deleteComment', (req, res)=>{
-    logger.info(`GET /post/search/${req.params.currentPage}/${req.params.postId}/${req.params.commentId}/deleteComment`);
+    logger.info(`GET /admin/post/search/${req.params.currentPage}/${req.params.postId}/${req.params.commentId}/deleteComment`);
     post.deleteSearchComment(req, res);
 })
 

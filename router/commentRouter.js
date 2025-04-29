@@ -13,13 +13,13 @@ router.get('/:currentPage', (req, res)=>{
 
 //댓글 삭제 버튼 클릭 시 요청 라우팅
 router.get('/delete/:commentId', (req, res)=>{
-    logger.info(`GET /comment/delete/${req.params.commentId}`);
+    logger.info(`GET /admin/comment/delete/${req.params.commentId}`);
     comment.delete(req, res);
 })
 
 //댓글 검색란에 정보 기입 후 검색버튼 클릭 시 요청 라우팅
 router.post('/search/:currentPage', (req, res)=>{
-    logger.info(`POST /comment/search/${req.params.currentPage}`);
+    logger.info(`POST /admin/comment/search/${req.params.currentPage}`);
     comment.search(req, res);
 })
 

@@ -10,13 +10,13 @@
     <% if(post.length !== 0){ %>
   
     <% if (requestIsReport===true){ %>
-      <form action="/reportedPost/search/1" method="post">
+      <form action="/admin/reportedPost/search/1" method="post">
         <div class="search-form">
             <input type="text" id="searchTerm" name="searchTerm">&nbsp;<button type="submit" class="search-button">검색</button>
         </div>
       </form>
     <% } else { %>
-    <form action="/post/search/1" method="post">
+    <form action="/admin/post/search/1" method="post">
       <div class="search-form">
           <input type="text" id="searchTerm" name="searchTerm">&nbsp;<button type="submit" class="search-button">검색</button>
       </div>
@@ -49,7 +49,7 @@
 
               <!--신고 게시물 관리 페이지의 검색 결과일 경우-->
               <% if (requestIsSearch===true){ %>
-                <form action="/reportedPost/search/<%=currentPage%>/<%=post[i].postId%>" method="post">
+                <form action="/admin/reportedPost/search/<%=currentPage%>/<%=post[i].postId%>" method="post">
                   <div class="detail-form">
                       <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="detail-button">상세정보</button>
                   </div>
@@ -59,7 +59,7 @@
               <!--신고 게시물 관리 페이지에서 검색 결과가 아닐 경우-->
               else { %>
                 <div class="detail-form">
-                  <a href="/reportedPost/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
+                  <a href="/admin/reportedPost/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
                 </div>
               <% } %>
             <% } 
@@ -69,7 +69,7 @@
 
               <!--게시물 관리 페이지의 검색 결과일 경우-->
               <% if (requestIsSearch===true){ %>
-                <form action="/post/search/<%=currentPage%>/<%=post[i].postId%>" method="post">
+                <form action="/admin/post/search/<%=currentPage%>/<%=post[i].postId%>" method="post">
                   <div class="detail-form">
                       <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="detail-button">상세정보</button>
                   </div>
@@ -79,7 +79,7 @@
               <!--게시물 관리 페이지에서 검색 결과가 아닐 경우-->
               else { %>
                 <div class="detail-form">
-                  <a href="/post/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
+                  <a href="/admin/post/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
                 </div>
               <% } %>
             <% } %>
@@ -108,7 +108,7 @@
   
             <!--게시물 관리 페이지일 경우-->
             if(requestIsReport===false){%>
-              <form action="/post/search/<%=k%>" method="post" style="display:inline;">
+              <form action="/admin/post/search/<%=k%>" method="post" style="display:inline;">
                 <input type="hidden" name="searchTerm" value="<%=searchTerm%>">
                   <span style="cursor: pointer; color: blue; text-decoration: underline;" onclick="this.parentNode.submit(); return false;">
                     <%=k%>
@@ -116,7 +116,7 @@
               </form> 
             <!--게시물 신고 관리 페이지일 경우-->
             <% } else { %>
-              <form action="/reportedPost/search/<%=k%>" method="post" style="display:inline;">
+              <form action="/admin/reportedPost/search/<%=k%>" method="post" style="display:inline;">
                 <input type="hidden" name="searchTerm" value="<%=searchTerm%>">
                   <span style="cursor: pointer; color: blue; text-decoration: underline;" onclick="this.parentNode.submit(); return false;">
                     <%=k%>
@@ -127,10 +127,10 @@
           <% } else { %>
             <!--게시물 관리 페이지일 경우-->
             <% if(requestIsReport===false){ %>
-              <span><a href="/post/<%=k%>"><%=k%></a></span> &nbsp;&nbsp;
+              <span><a href="/admin/post/<%=k%>"><%=k%></a></span> &nbsp;&nbsp;
               <!--게시물 신고 관리 페이지일 경우-->
             <% } else { %>
-              <span><a href="/reportedPost/<%=k%>"><%=k%></a></span> &nbsp;&nbsp;
+              <span><a href="/admin/reportedPost/<%=k%>"><%=k%></a></span> &nbsp;&nbsp;
             <% } %>
           <% }
         } %>
@@ -153,7 +153,7 @@
 
         <!--신고 게시물 관리 페이지의 검색 결과일 경우-->
         <% if (requestIsSearch===true){ %>
-          <form action="/reportedPost/search/<%=currentPage%>/<%=postData[0].postId%>/deletePost" method="post">
+          <form action="/admin/reportedPost/search/<%=currentPage%>/<%=postData[0].postId%>/deletePost" method="post">
             <div class="delete-form">
                 <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="delete-button" onclick="return confirm('정말로 삭제하시겠습니까?');">게시물 삭제</button>
             </div>
@@ -162,7 +162,7 @@
 
         <!--신고 게시물 관리 페이지에서 검색 결과가 아닐 경우-->
         else { %>
-          <a href="/reportedPost/<%=currentPage%>/<%=postData[0].postId%>/deletePost"><button class="delete-button" onclick="return confirm('정말로 삭제하시겠습니까?');">게시물 삭제</button></a>
+          <a href="/admin/reportedPost/<%=currentPage%>/<%=postData[0].postId%>/deletePost"><button class="delete-button" onclick="return confirm('정말로 삭제하시겠습니까?');">게시물 삭제</button></a>
         <% } %>
       <% } 
 
@@ -171,7 +171,7 @@
 
         <!--게시물 관리 페이지의 검색 결과일 경우-->
         <% if (requestIsSearch===true){ %>
-          <form action="/post/search/<%=currentPage%>/<%=postData[0].postId%>/deletePost" method="post">
+          <form action="/admin/post/search/<%=currentPage%>/<%=postData[0].postId%>/deletePost" method="post">
             <div class="delete-form">
                 <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="delete-button" onclick="return confirm('정말로 삭제하시겠습니까?');">게시물 삭제</button>
             </div>
@@ -180,7 +180,7 @@
         
         <!--게시물 관리 페이지에서 검색 결과가 아닐 경우-->
         else { %>
-          <a href="/post/<%=currentPage%>/<%=postData[0].postId%>/deletePost"><button class="delete-button" onclick="return confirm('정말로 삭제하시겠습니까?');">게시물 삭제</button></a>
+          <a href="/admin/post/<%=currentPage%>/<%=postData[0].postId%>/deletePost"><button class="delete-button" onclick="return confirm('정말로 삭제하시겠습니까?');">게시물 삭제</button></a>
         <% } %>
       <% } %>
 
@@ -222,14 +222,14 @@
 
                     <!--신고 게시물 관리 페이지의 검색 결과일 경우-->
                     <% if (requestIsSearch===true){ %>
-                      <form action="/reportedPost/search/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment" method="post">
+                      <form action="/admin/reportedPost/search/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment" method="post">
                         <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button>
                       </form>
                     <% } 
 
                     <!--신고 게시물 관리 페이지에서 검색 결과가 아닐 경우-->
                     else { %>
-                      <a href="/reportedPost/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button></a>
+                      <a href="/admin/reportedPost/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button></a>
                     <% } %>
                   <% } 
 
@@ -238,14 +238,14 @@
 
                     <!--게시물 관리 페이지의 검색 결과일 경우-->
                     <% if (requestIsSearch===true){ %>
-                      <form action="/post/search/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment" method="post">
+                      <form action="/admin/post/search/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment" method="post">
                         <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="comment-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button>
                       </form>
                     <% } 
               
                     <!--게시물 관리 페이지에서 검색 결과가 아닐 경우-->
                     else { %>
-                      <a href="/post/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button></a>
+                      <a href="/admin/post/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button></a>
                     <% } %>
                   <% } %>
                 </td>
