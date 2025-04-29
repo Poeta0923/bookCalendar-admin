@@ -9,11 +9,12 @@
         <input type="text" id="searchTerm" name="searchTerm">&nbsp;<button type="submit" class="search-button">검색</button>
     </div>
 </form>
-
+<div class="table-container">
 <table>
     <thead>
         <!--테이블 항목 <th> 태그는 항목 명-->
         <tr>
+          <th>detail</th>
             <th>title</th>
             <th>nickName</th>
             <th>date</th>
@@ -33,9 +34,10 @@
             <!--게시물 확인 버튼 클릭 시 게시물 관리 페이지로 이동-->
             <td>
               <div class="detail-form">
-                <%= comment[i].title %><a href="/post/1/<%=comment[i].postId%>"><button class="detail-button">게시물 상세정보</button></a>
+                <a href="/post/1/<%=comment[i].postId%>"><button class="detail-button">게시물 상세정보</button></a>
               </div>
             </td>
+            <td><%= comment[i].title %></td>
             <td><%= comment[i].nickName %></td>
             <td><%= comment[i].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></td>
             <td><%= comment[i].contents %></td>
@@ -47,6 +49,7 @@
         <% } %>
     </tbody>
 </table>
+</div>
 
 <div class="number">
     <!--댓글 관리 화면 현재 페이지와 다른 페이지들 표시-->

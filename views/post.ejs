@@ -23,10 +23,12 @@
     </form>
     <% } %>
   
+    <div class="table-container">
     <table>
       <thead>
         <!--테이블 항목 <th> 태그는 항목 명-->
         <tr>
+          <th>detail</th>
           <th>title</th>
           <th>nickName</th>
           <th>date</th>
@@ -49,7 +51,7 @@
               <% if (requestIsSearch===true){ %>
                 <form action="/reportedPost/search/<%=currentPage%>/<%=post[i].postId%>" method="post">
                   <div class="detail-form">
-                      <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><%= post[i].title %><button type="submit" class="detail-button">상세정보</button>
+                      <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="detail-button">상세정보</button>
                   </div>
                 </form>
               <% } 
@@ -57,7 +59,7 @@
               <!--신고 게시물 관리 페이지에서 검색 결과가 아닐 경우-->
               else { %>
                 <div class="detail-form">
-                  <%= post[i].title %><a href="/reportedPost/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
+                  <a href="/reportedPost/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
                 </div>
               <% } %>
             <% } 
@@ -69,7 +71,7 @@
               <% if (requestIsSearch===true){ %>
                 <form action="/post/search/<%=currentPage%>/<%=post[i].postId%>" method="post">
                   <div class="detail-form">
-                      <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><%= post[i].title %><button type="submit" class="detail-button">상세정보</button>
+                      <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="detail-button">상세정보</button>
                   </div>
                 </form>
               <% } 
@@ -77,11 +79,12 @@
               <!--게시물 관리 페이지에서 검색 결과가 아닐 경우-->
               else { %>
                 <div class="detail-form">
-                  <%= post[i].title %><a href="/post/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
+                  <a href="/post/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
                 </div>
               <% } %>
             <% } %>
             </td>
+            <td><%= post[i].title %></td>
             <td><%= post[i].nickName %></td>
             <td><%= post[i].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></td>
         
@@ -91,6 +94,7 @@
         <% } %>
       </tbody>
     </table>
+    </div>
   
     <div class="number">
       <!--게시물 관리 화면 현재 페이지와 다른 페이지들 표시-->
@@ -140,6 +144,7 @@
   </div>
   <!--post 상세 사항 부분-->
   <div class="right-panel">
+    <div class="detail-container">
     <% if (postDetail===true) { %>
       <h1 class="main-title"><%= postData[0].title %></h1>
 
@@ -186,6 +191,7 @@
       <p>reportCount : <%= postData[0].reportCount %></p>
       <p>contents : <%= postData[0].contents %></p>
       <% if(comment.length!==0){ %>
+      
       <table>
         <thead>
             <!--테이블 항목 <th> 태그는 항목 명-->
@@ -247,6 +253,7 @@
             <% } %>
         </tbody>
       </table>
+      </div>
       <% } else { %>
         <p> 댓글이 없습니다.</p>
       <% } %>
