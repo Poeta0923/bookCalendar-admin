@@ -150,16 +150,6 @@ body {
     font-size: 2em;
 }
 
-.logo-image {
-    position: absolute;
-    left: 50%; /* 왼쪽 가장자리 기준으로 50% 위치 */
-    top: 35%; /* 위쪽 가장자리 기준으로 50% 위치 */
-    height: 35%;
-    width: auto;
-    transform: translate(-50%, -50%); /* X축, Y축 모두 -50% 이동하여 중앙 정렬 */
-    object-fit: contain;
-}
-
 table {
     width: 100%; /* 테이블 너비를 부모 요소에 맞춤 */
     border-collapse: collapse; /* 테두리를 합쳐서 한 줄로 표시 */
@@ -190,41 +180,6 @@ td button {
   
 td button:hover {
     background-color: #c82333;
-}
-
-.button-container {
-    position: absolute;
-    top: 60%;
-    left: 25%;
-    width:50%;
-    align-items: center;
-    display: flex; /* Flexbox 레이아웃 사용 */
-    flex-wrap: wrap; /* 화면 너비가 좁아지면 다음 줄로 넘어가도록 설정 */
-    justify-content: space-around; /* 각 버튼 사이에 동일한 간격 배치 */
-}
-  
-.admin-button {
-    display: flex; /* 아이콘과 텍스트를 가로로 정렬하기 위해 Flexbox 사용 */
-    width: 46%;
-    align-items: center; /* 아이콘과 텍스트를 세로 방향으로 가운데 정렬 */
-    background-color: #333; /* 버튼 배경색 */
-    color: white; /* 버튼 텍스트 색상 */
-    border: none; /* 테두리 제거 */
-    border-radius: 5px; /* 둥근 테두리 */
-    padding: 15px 25px; /* 안쪽 여백 */
-    margin: 2%; /* 바깥쪽 여백 (버튼 사이 간격) */
-    font-size: 16px; /* 글자 크기 */
-    cursor: pointer; /* 마우스 커서를 손 모양으로 변경 */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
-}
-  
-.admin-button:hover {
-    background-color: #555; /* 호버 시 배경색 변경 */
-}
-  
-.button-icon {
-    margin-right: 10px; /* 아이콘과 텍스트 사이 간격 */
-    font-size: 20px; /* 아이콘 크기 */
 }
 
 .number {
@@ -338,3 +293,172 @@ td button:hover {
 .table-button:hover {
     opacity: 0.8;
 }
+
+.layout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh; /* 변경된 높이 */
+  }
+  
+  .menu-container {
+    display: flex;
+    width: 90%; /* 넓이를 90%로 늘림 */
+    max-width: 1200px; /* 최대 넓이 조정 */
+    height: 60vh; /* 요청하신 대로 높이 유지 */
+    max-height: 700px; /* 최대 높이 조정 */
+  }
+  
+  .menu-left-panel {
+    flex: 1; /* 오른쪽 패널과 동일한 비율 */
+    padding-top: 10px; /* 위쪽 padding */
+    padding-bottom: 10px; /* 아래쪽 padding */
+    padding-left: 10px; /* 왼쪽 padding */
+    padding-right: 0; /* 오른쪽 padding을 0으로 설정 */
+    box-sizing: border-box;
+    display: flex; /* 내부 요소 중앙 정렬을 위해 flex 사용 */
+    justify-content: center; /* 가로 방향 중앙 정렬 */
+    align-items: center; /* 세로 방향 중앙 정렬 */
+  }
+  
+  .logo-container {
+    background-color: #b4b5b6; /* 기존 배경색 유지 */
+    width: 100%; /* 부모 너비 꽉 채우기 */
+    height: 100%; /* 부모 높이 꽉 채우기 */
+    display: flex; /* 이미지 중앙 정렬을 위해 flex 사용 */
+    justify-content: center; /* 가로 방향 중앙 정렬 */
+    align-items: center; /* 세로 방향 중앙 정렬 */
+    padding: 10px; /* 10px 패딩 추가 */
+    box-sizing: border-box; /* 패딩이 width, height에 영향 주지 않도록 */
+  }
+  
+  .logo-container > img {
+    max-width: 100%; /* 이미지가 컨테이너 너비보다 커지지 않도록 */
+    max-height: 100%; /* 이미지가 컨테이너 높이보다 커지지 않도록 */
+    object-fit: contain; /* 이미지 비율 유지하며 컨테이너에 맞춤 */
+  }
+  
+  .menu-right-panel {
+    flex: 1; /* 왼쪽 패널과 동일한 비율 */
+    display: grid;
+    grid-template-columns: 1fr; /* 1개의 컬럼을 기본으로 */
+    grid-template-rows: 1fr 1fr 1fr; /* 각 행의 높이를 동일하게 1fr로 설정 */
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100%; /* 부모 컨테이너 높이에 맞춤 */
+  }
+  
+  .menu-right-panel > a {
+    display: block; /* <a> 태그를 블록 레벨 요소로 변경 */
+    height: 100%; /* 부모 컨테이너의 높이를 채우도록 설정 */
+    text-decoration: none; /* 텍스트 장식 없애기 (언더라인 제거) */
+  }
+  
+  .middle-container > a {
+    display: block; /* <a> 태그를 블록 레벨 요소로 변경 */
+    width: 100%; /* 부모 컨테이너의 너비를 채우도록 설정 */
+    text-decoration: none; /* 텍스트 장식 없애기 (언더라인 제거) */
+  }
+  
+  .bottom-container > a {
+    display: block; /* <a> 태그를 블록 레벨 요소로 변경 */
+    width: 100%; /* 부모 컨테이너의 너비를 채우도록 설정 */
+    text-decoration: none; /* 텍스트 장식 없애기 (언더라인 제거) */
+  }
+  
+  .menu-button {
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* 아이콘 색상 (선택 사항) */
+    position: relative; /* 아이콘 absolute 배치를 위한 기준점 */
+    padding: 10px; /* 필요에 따라 padding 조절 */
+    overflow: hidden; /* 아이콘이 버튼 영역을 벗어나지 않도록 */
+    font-size: 5em; /* 아이콘 크기를 5em으로 유지 */
+    width: 100%; /* 부모 <a> 태그의 너비를 채우도록 설정 */
+    height: 100%; /* 부모 <a> 태그의 높이를 채우도록 설정 */
+    box-sizing: border-box; /* padding, border가 전체 크기에 영향 주지 않도록 */
+  }
+  
+  .menu-button:hover {
+    transform: scale(1.05);
+  }
+  
+  .top {
+    background-color: #64b5f6; /* 파란색 계열 */
+  }
+  
+  .top .button-text {
+    position: absolute;
+    bottom: 10px; /* 아래쪽 여백 조절 */
+    right: 10px; /* 오른쪽 여백 조절 */
+    font-size: 0.3em; /* 텍스트 크기를 0.3em으로 유지 */
+    font-weight: bold; /* 텍스트 굵게 (선택 사항) */
+  }
+  
+  .middle-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 첫 번째 컬럼은 2배, 두 번째 컬럼은 1배 비율 */
+    gap: 10px;
+    height: 100%; /* middle-container가 부모 높이를 채우도록 */
+  }
+  
+  .middle-left {
+    background-color: #ffab91; /* 주황색 계열 */
+  }
+  
+  .middle-left .button-text {
+    position: absolute;
+    bottom: 10px; /* 아래쪽 여백 조절 */
+    left: 10px; /* 왼쪽 여백 조절 */
+    font-size: 0.3em; /* 텍스트 크기를 0.3em으로 유지 */
+    font-weight: bold; /* 텍스트 굵게 (선택 사항) */
+  }
+  
+  .middle-right {
+    background-color: #9e9e9e; /* 회색 */
+  }
+  
+  .middle-right .button-text {
+    position: absolute;
+    bottom: 10px; /* 아래쪽 여백 조절 */
+    right: 10px; /* 오른쪽 여백 조절 */
+    font-size: 0.3em; /* 텍스트 크기를 0.3em으로 유지 */
+    font-weight: bold; /* 텍스트 굵게 (선택 사항) */
+  }
+  
+  .bottom-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 첫 번째 컬럼은 1배, 두 번째 컬럼은 2배 비율 */
+    gap: 10px;
+    height: 100%; /* bottom-container가 부모 높이를 채우도록 */
+  }
+  
+  .bottom-left {
+    background-color: #a5d6a7; /* 밝은 녹색 계열 */
+  }
+  
+  .bottom-left .button-text {
+    position: absolute;
+    bottom: 10px; /* 아래쪽 여백 조절 */
+    left: 10px; /* 왼쪽 여백 조절 */
+    font-size: 0.3em; /* 텍스트 크기를 0.3em으로 유지 */
+    font-weight: bold; /* 텍스트 굵게 (선택 사항) */
+  }
+  
+  .bottom-right {
+    background-color: #f48fb1; /* 분홍색 계열 */
+  }
+  
+  .bottom-right .button-text {
+    position: absolute;
+    bottom: 10px; /* 아래쪽 여백 조절 */
+    right: 10px; /* 오른쪽 여백 조절 */
+    font-size: 0.3em; /* 텍스트 크기를 0.3em으로 유지 */
+    font-weight: bold; /* 텍스트 굵게 (선택 사항) */
+  }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book calendar 관리자 웹</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -16,27 +17,51 @@
                     <button class="change-password-button">비밀번호 변경</button>
                 </div>
             </header>
-            <div class="content-area">
-                <h1 class="main-title">Book Calendar 관리자 웹</h1>
-            </div>
-            <img src="/images/logo.png" alt="배경 이미지" class="logo-image">
-            <div class="button-container">
-                <button class="admin-button" onclick="window.location.href='/member/1'">
-                  <span class="button-icon">🤵</span> 회원 관리
-                </button>
-                <button class="admin-button" onclick="window.location.href='/post/1'">
-                  <span class="button-icon">📑</span> 게시물 관리
-                </button>
-                <button class="admin-button" onclick="window.location.href='/reportedPost/1'">
-                  <span class="button-icon">🚫</span> 신고 내역 관리
-                </button>
-                <button class="admin-button">
-                  <span class="button-icon">📊</span> 통계 확인
-                </button>
-                <button class="admin-button">
-                  <span class="button-icon">🤖</span> AI 관리
-                </button>
+            <div class="layout-container">
+              <div class="menu-container">
+                <div class="menu-left-panel">
+                  <div class="logo-container">
+                    <img src="/images/logo.png" alt="로고">
+                  </div>
+                </div>
+                <div class="menu-right-panel">
+                  <a href="/ai">
+                    <button class="menu-button top">
+                      <i class="ri-robot-2-line"></i>
+                      <span class="button-text">AI 관리</span>
+                    </button>
+                  </a>
+                  <div class="middle-container">
+                    <a href="/post/1">
+                      <button class="menu-button middle-left">
+                        <i class="ri-article-fill"></i>
+                        <span class="button-text">게시물 관리</span>
+                      </button>
+                    </a>
+                    <a href="/member/1">
+                      <button class="menu-button middle-right">
+                        <i class="ri-user-line"></i>
+                        <span class="button-text">회원 관리</span>
+                      </button>
+                    </a>
+                  </div>
+                  <div class="bottom-container">
+                    <a href="/reportedPost/1">
+                      <button class="menu-button bottom-left">
+                        <i class="ri-error-warning-fill"></i>
+                        <span class="button-text">신고 내역 관리</span>
+                      </button>
+                    </a>
+                    <a href="/stastics">
+                      <button class="menu-button bottom-right">
+                        <i class="ri-bar-chart-fill"></i>
+                        <span class="button-text">통계 확인</span>
+                      </button>
+                    </a>
+                  </div>
+                </div>
               </div>
+            </div>
         </main>
     </div>
 </body>
