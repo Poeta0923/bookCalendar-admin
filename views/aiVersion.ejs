@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 모델 버전 관리 레이아웃</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ai-body-container">
+    <div class="grid-container">
+        <div class="ai-container top-left">
+            <h1>감정 분류 모델</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>f1Score</th>
+                        <th>epoch</th>
+                        <th>dropOut</th>
+                        <th>batchSize</th>
+                        <th>Load</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var i=0; i < emotionModel.length; i++) { %>
+                        <tr>
+                            <td><%=emotionModel[i][0]%><% if(emotionLoaded===emotionModel[i][0]){ %><i class="ri-check-line"></i><% } %></td>
+                            <td><%=emotionScore[i]%></td>
+                            <td><%=emotionModel[i][1]%></td>
+                            <td><%=emotionModel[i][2]%></td>
+                            <td><%=emotionModel[i][3]%></td>
+                            <td><a href="/ai/emotionLoad/<%=emotionModel[i][0]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/ai/delete/<%=emotionModel[i][0]%>"><button class="detail-button">Delete</button></a></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <form class="form-grid" action="/ai/emotionModelTrain" method="post">
+                <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
+                <div class="input-group">
+                    <input type="number" id="epoch" name="epoch" placeholder="Epoch">
+                    <input type="number" step="0.01" id="dropOut" name="dropOut" placeholder="Drop Out">
+                    <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
+                    <button type="submit">Train Model</button>
+                </div>
+            </form>
+        </div>
+        <div class="ai-container top-right">
+            <h1>의도 분류 모델</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>accuracy</th>
+                        <th>epoch</th>
+                        <th>dropOut</th>
+                        <th>batchSize</th>
+                        <th>Load</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var i=0; i < intentionModel.length; i++) { %>
+                        <tr>
+                            <td><%=intentionModel[i][0]%><% if(intentionLoaded===intentionModel[i][0]){ %><i class="ri-check-line"></i><% } %></td>
+                            <td><%=intentionScore[i]%></td>
+                            <td><%=intentionModel[i][1]%></td>
+                            <td><%=intentionModel[i][2]%></td>
+                            <td><%=intentionModel[i][3]%></td>
+                            <td><a href="/ai/intentionLoad/<%=intentionModel[i][0]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/ai/delete/<%=intentionModel[i][0]%>"><button class="detail-button">Delete</button></a></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <form class="form-grid" action="/ai/intentionModelTrain" method="post">
+                <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
+                <div class="input-group">
+                    <input type="number" id="epoch" name="epoch" placeholder="Epoch">
+                    <input type="number" step="0.01" id="dropOut" name="dropOut" placeholder="Drop Out">
+                    <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
+                    <button type="submit">Train Model</button>
+                </div>
+            </form>
+        </div>
+        <div class="ai-container bottom-left">
+            <h1>질문지 생성 모델</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>rouge</th>
+                        <th>epoch</th>
+                        <th>batchSize</th>
+                        <th>Load</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var i=0; i < questionModel.length; i++) { %>
+                        <tr>
+                            <td><%=questionModel[i][0]%><% if(questionLoaded===questionModel[i][0]){ %><i class="ri-check-line"></i><% } %></td>
+                            <td><%=questionScore[i]%></td>
+                            <td><%=questionModel[i][1]%></td>
+                            <td><%=questionModel[i][2]%></td>
+                            <td><a href="/ai/questionLoad/<%=questionModel[i][0]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/ai/delete/<%=questionModel[i][0]%>"><button class="detail-button">Delete</button></a></td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+            <form class="form-grid" action="/ai/questionModelTrain" method="post">
+                <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
+                <div class="input-group">
+                    <input type="number" id="epoch" name="epoch" placeholder="Epoch">
+                    <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
+                    <button type="submit">Train Model</button>
+                </div>
+            </form>
+        </div>
+        <div class="ai-container">
+            <fieldset>
+                <form action="/admin/ai/updateAuto" method="post" class="checkbox-form">
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="questionModelAuto" value="1" <%= questionModelAuto === 1 ? 'checked' : '' %> />
+                      <span>감정 분류 모델 자동학습</span>
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="emotionModelAuto" value="1" <%= emotionModelAuto === 1 ? 'checked' : '' %> />
+                      <span>의도 분류 모델 자동학습</span>
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="intentionModelAuto" value="1" <%= intentionModelAuto === 1 ? 'checked' : '' %> />
+                      <span>질문지 생성 모델 자동학습</span>
+                    </label>
+                    <button type="submit">자동 학습 설정 저장</button>
+                  </form>
+              </fieldset>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+

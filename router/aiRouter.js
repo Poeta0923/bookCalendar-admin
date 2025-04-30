@@ -7,8 +7,62 @@ var ai = require('../lib/ai');
 
 //AI 버전 관리 화면 요청
 router.get('/version', (req, res)=>{
-    logger.info(`GET /admin/ai`);
+    logger.info(`GET /admin/ai/version`);
     ai.view(req, res);
+})
+
+//감정 분류 모델 선택 요청
+router.get('/emotionLoad/:modelName', (req, res)=>{
+    logger.info(`GET /admin/ai/emotionLoad/${req.params.modelName}`);
+    ai.emotionLoad(req, res);
+})
+
+//의도 분류 모델 선택 요청
+router.get('/intentionLoad/:modelName', (req, res)=>{
+    logger.info(`GET /admin/ai/intentionLoad/${req.params.modelName}`);
+    ai.intentionLoad(req, res);
+})
+
+//질문 생성 모델 선택 요청
+router.get('/questionLoad/:modelName', (req, res)=>{
+    logger.info(`GET /admin/ai/questionLoad/${req.params.modelName}`);
+    ai.questionLoad(req, res);
+})
+
+//모델 삭제 요청
+router.get('/delete/:modelName', (req, res)=>{
+    logger.info(`GET /admin/ai/delete/${req.params.modelName}`);
+    ai.delete(req, res);
+})
+
+//감정 분류 모델 생성 요청
+router.post('/emotionModelTrain', (req, res)=>{
+    logger.info(`POST /emotionModelTrain`);
+    ai.emotionModelTrain(req, res);
+})
+
+//의도 분류 모델 생성 요청
+router.post('/intentionModelTrain', (req, res)=>{
+    logger.info(`POST /intentionModelTrain`);
+    ai.intentionModelTrain(req, res);
+})
+
+//질문 생성 모델 생성 요청
+router.post('/questionModelTrain', (req, res)=>{
+    logger.info(`POST /questionModelTrain`);
+    ai.questionModelTrain(req, res);
+})
+
+//자동 학습 선택 요청
+router.post('/updateAuto', (req, res)=>{
+    logger.info(`POST /updateAuto`);
+    ai.updateAuto(req, res);
+})
+
+//현재 load된 모델들의 성능지표 검사
+router.get('/testModel', (req, res)=>{
+    logger.info(`get /testModel`);
+    ai.testModel(req, res);
 })
 
 module.exports=router;
