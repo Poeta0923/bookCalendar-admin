@@ -501,3 +501,96 @@ td button:hover {
     font-size: 0.3em; /* 텍스트 크기를 0.3em으로 유지 */
     font-weight: bold; /* 텍스트 굵게 (선택 사항) */
   }
+
+  .ai-body-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh; /* 변경된 높이 */
+    margin-right: 20px;
+    width: 100%; /* 부모 요소 넓이의 80%로 설정 */
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%; /* 부모 컨테이너의 높이에 맞춤 */
+    width: 100%; /* 부모 컨테이너의 너비에 맞춤 */
+    gap: 10px; /* ai-container 사이의 간격 (필요한 경우) */
+    flex-shrink: 0;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+  
+  .ai-container {
+    background-color: #ffffff;
+    border-radius: 30px;
+    /* margin: 10px; grid-container의 gap으로 간격 조절 권장 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* 내부 요소들을 세로로 배치 */
+    justify-content: flex-start; /* 상하 기준 위로 정렬 */
+    align-items: flex-start; /* 좌우 기준 시작점부터 정렬 */
+    font-size: 20px;
+    color: #333;
+    padding-top: 0;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    flex-shrink: 0;
+    width: auto; /* 또는 width: unset; */ /* 명시적인 너비 설정 제거 */
+    height: auto; /* 또는 height: unset; */ /* 명시적인 높이 설정 제거 */
+    font-size: 1em;
+  }
+
+.ai-container h1 {
+    margin-bottom: 15px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 3개의 컬럼으로 변경 */
+  grid-template-rows: auto auto; /* 2개의 로우 유지 */
+  gap: 10px;
+  width: 100%; /* ai-container의 전체 넓이 사용 */
+  margin-top: 20px;
+  margin-top: auto;
+}
+
+.form-grid > input#modelName {
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  grid-column: 1 / 4; /* 3개의 컬럼 모두 차지 */
+}
+
+.form-grid > .input-group {
+  display: grid; /* flex 대신 grid 사용 */
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* 4개의 컬럼 */
+  gap: 40px;
+}
+
+.form-grid > .input-group > input[type="number"] {
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  width: 100%; /* 각 입력 필드가 컬럼의 전체 넓이 차지 */
+}
+
+.form-grid > .input-group > button[type="submit"] {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  grid-column: 4 / 5; /* 4번째 컬럼에 배치 */
+}
+
+.form-grid > .input-group > button[type="submit"]:hover {
+  background-color: #1e7e34;
+}

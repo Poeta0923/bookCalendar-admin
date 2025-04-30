@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 모델 버전 관리 레이아웃</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ai-body-container">
+    <div class="grid-container">
+        <div class="ai-container top-left">
+            <h1>AI 모델 관리</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>epoch</th>
+                        <th>dropOut</th>
+                        <th>batchSize</th>
+                        <th>Load</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>emotion-model0.1</td>
+                        <td>10</td>
+                        <td>0.5</td>
+                        <td>34</td>
+                        <td><button class="detail-button">Load</button></td>
+                        <td><button class="detail-button">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <form class="form-grid" action="/ai/train/someModel" method="post">
+                <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
+                <div class="input-group">
+                    <input type="number" id="epoch" name="epoch" placeholder="Epoch">
+                    <input type="number" step="0.01" id="dropOut" name="dropOut" placeholder="Drop Out">
+                    <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
+                    <button type="submit">Train Model</button>
+                </div>
+            </form>
+        </div>
+        <div class="ai-container top-right">
+            <h1>AI 모델 관리</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>epoch</th>
+                        <th>dropOut</th>
+                        <th>batchSize</th>
+                        <th>Load</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>emotion-model0.1</td>
+                        <td>10</td>
+                        <td>0.5</td>
+                        <td>34</td>
+                        <td><button class="detail-button">Load</button></td>
+                        <td><button class="detail-button">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <form class="form-grid" action="/ai/train/someModel" method="post">
+                <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
+                <div class="input-group">
+                    <input type="number" id="epoch" name="epoch" placeholder="Epoch">
+                    <input type="number" step="0.01" id="dropOut" name="dropOut" placeholder="Drop Out">
+                    <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
+                    <button type="submit">Train Model</button>
+                </div>
+            </form>
+        </div>
+        <div class="ai-container bottom-left">
+            <h1>AI 모델 관리</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>epoch</th>
+                        <th>dropOut</th>
+                        <th>batchSize</th>
+                        <th>Load</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>emotion-model0.1</td>
+                        <td>10</td>
+                        <td>0.5</td>
+                        <td>34</td>
+                        <td><button class="detail-button">Load</button></td>
+                        <td><button class="detail-button">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <form class="form-grid" action="/ai/train/someModel" method="post">
+                <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
+                <div class="input-group">
+                    <input type="number" id="epoch" name="epoch" placeholder="Epoch">
+                    <input type="number" step="0.01" id="dropOut" name="dropOut" placeholder="Drop Out">
+                    <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
+                    <button type="submit">Train Model</button>
+                </div>
+            </form>
+        </div>
+        <div class="ai-container"></div>
+    </div>
+    </div>
+</body>
+</html>

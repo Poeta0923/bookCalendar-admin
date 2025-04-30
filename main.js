@@ -34,8 +34,8 @@ var memberRouter = require('./router/memberRouter');
 var postRouter = require('./router/postRouter');
 var reportedPostRouter = require('./router/reportedPostRouter');
 var reportedCommentRouter = require('./router/reportedCommentRouter');
-/*var satisticsRouter = require('./router/satisticsRouter');
-var aiRouter = require('./router/aiRouter'); */
+var aiRouter = require('./router/aiRouter');
+/*var satisticsRouter = require('./router/satisticsRouter'); */
 
 //정적 파일들이 위치한 폴더 지정
 app.use(express.static('public'));
@@ -45,8 +45,8 @@ app.use('/admin/member', memberRouter);
 app.use('/admin/post', postRouter);
 app.use('/admin/reportedPost', reportedPostRouter);
 app.use('/admin/reportedComment', reportedCommentRouter);
-/*app.use('/admin/satistics', satisticsRouter);
-app.use('/admin/ai', aiRouter);*/
+app.use('/admin/ai', aiRouter);
+/*app.use('/admin/satistics', satisticsRouter);*/
 
 //favicon 파일이 없기 때문에 브라우저가 요청 시 에러 처리.
 app.get('/favicon.ico', (req, res)=>res.writeHead(404));
