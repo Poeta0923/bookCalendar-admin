@@ -25,12 +25,12 @@
                 <tbody>
                     <% for (var i=0; i < emotionModel.length; i++) { %>
                         <tr>
-                            <td><%=emotionModel[i][0]%><% if(emotionLoaded===emotionModel[i][0]){ %><i class="ri-check-line"></i><% } %></td>
+                            <td><%=emotionModel[i]%><% if(emotionLoaded===emotionModel[i]){ %><i class="ri-check-line"></i><% } %></td>
                             <td><%=emotionModelDetail[i].f1</td>
                             <td><%=emotionModelDetail[i].epoch%></td>
                             <td><%=emotionModelDetail[i].dropOut%></td>
-                            <td><a href="/ai/emotionLoad/<%=emotionModel[i][0]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteEmtotion/<%=emotionModel[i][0]%>"><button class="detail-button">Delete</button></a></td>
+                            <td><a href="/ai/emotionLoad/<%=emotionModel[i]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/ai/deleteEmtotion/<%=emotionModel[i]%>"><button class="detail-button">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
@@ -60,12 +60,12 @@
                 <tbody>
                     <% for (var i=0; i < intentionModel.length; i++) { %>
                         <tr>
-                            <td><%=intentionModel[i][0]%><% if(intentionLoaded===intentionModel[i][0]){ %><i class="ri-check-line"></i><% } %></td>
+                            <td><%=intentionModel[i]%><% if(intentionLoaded===intentionModel[i]){ %><i class="ri-check-line"></i><% } %></td>
                             <td><%=intentionModelDetail[i].accuracy%></td>
                             <td><%=intentionModelDetail[i].epoch%></td>
                             <td><%=intentionModelDetail[i].dropOut%></td>
-                            <td><a href="/ai/intentionLoad/<%=intentionModel[i][0]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteIntention/<%=intentionModel[i][0]%>"><button class="detail-button">Delete</button></a></td>
+                            <td><a href="/ai/intentionLoad/<%=intentionModel[i]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/ai/deleteIntention/<%=intentionModel[i]%>"><button class="detail-button">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
@@ -94,11 +94,11 @@
                 <tbody>
                     <% for (var i=0; i < questionModel.length; i++) { %>
                         <tr>
-                            <td><%=questionModel[i][0]%><% if(questionLoaded===questionModel[i][0]){ %><i class="ri-check-line"></i><% } %></td>
+                            <td><%=questionModel[i]%><% if(questionLoaded===questionModel[i]){ %><i class="ri-check-line"></i><% } %></td>
                             <td><%=questionModelDetail[i].rouge%></td>
                             <td><%=questionModelDetail[i].epoch%></td>
-                            <td><a href="/ai/questionLoad/<%=questionModel[i][0]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteQuestion/<%=questionModel[i][0]%>"><button class="detail-button">Delete</button></a></td>
+                            <td><a href="/ai/questionLoad/<%=questionModel[i]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/ai/deleteQuestion/<%=questionModel[i]%>"><button class="detail-button">Delete</button></a></td>
                         </tr>
                         <% } %>
                 </tbody>
