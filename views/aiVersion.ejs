@@ -23,14 +23,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% for (var i=0; i < emotionModel.length; i++) { %>
+                    <% for (var i=0; i < emotionModel.length; i++) { 
+                        var matchingIndex = -1;
+                        for (var j = 0; j < emotionDetail.length; j++){
+                            if(emotionDetail[j].modelName===emotionModel[i]){
+                                matchingIndex = j;
+                                break;
+                            }
+                        }
+                        %>
                         <tr>
                             <td><%=emotionModel[i]%><% if(emotionLoaded===emotionModel[i]){ %><i class="ri-check-line"></i><% } %></td>
-                            <td><%=emotionModelDetail[i].f1</td>
-                            <td><%=emotionModelDetail[i].epoch%></td>
-                            <td><%=emotionModelDetail[i].dropOut%></td>
+                            <td><%= matchingIndex !== -1 ? emotionDetail[matchingIndex].f1 : '-' %></td>
+                            <td><%= matchingIndex !== -1 ? emotionDetail[matchingIndex].epoch : '-' %></td>
+                            <td><%= matchingIndex !== -1 ? emotionDetail[matchingIndex].dropOut : '-' %></td>
                             <td><a href="/ai/emotionLoad/<%=emotionModel[i]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteEmtotion/<%=emotionModel[i]%>"><button class="detail-button">Delete</button></a></td>
+                            <td><a href="/ai/deleteEmotion/<%=emotionModel[i]%>"><button class="detail-button">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
@@ -58,12 +66,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% for (var i=0; i < intentionModel.length; i++) { %>
+                    <% for (var i=0; i < intentionModel.length; i++) { 
+                        var matchingIndex = -1;
+                        for (var j = 0; j < intentionDetail.length; j++){
+                            if(intentionDetail[j].modelName===intentionModel[i]){
+                                matchingIndex = j;
+                                break;
+                            }
+                        }
+                        %>
                         <tr>
                             <td><%=intentionModel[i]%><% if(intentionLoaded===intentionModel[i]){ %><i class="ri-check-line"></i><% } %></td>
-                            <td><%=intentionModelDetail[i].accuracy%></td>
-                            <td><%=intentionModelDetail[i].epoch%></td>
-                            <td><%=intentionModelDetail[i].dropOut%></td>
+                            <td><%= matchingIndex !== -1 ? intentionDetail[matchingIndex].accuracy : '-' %></td>
+                            <td><%= matchingIndex !== -1 ? intentionDetail[matchingIndex].epoch : '-' %></td>
+                            <td><%= matchingIndex !== -1 ? intentionDetail[matchingIndex].dropOut : '-' %></td>
                             <td><a href="/ai/intentionLoad/<%=intentionModel[i]%>"><button class="detail-button">Load</button></a></td>
                             <td><a href="/ai/deleteIntention/<%=intentionModel[i]%>"><button class="detail-button">Delete</button></a></td>
                         </tr>
@@ -87,20 +103,30 @@
                         <th>Model</th>
                         <th>rouge</th>
                         <th>epoch</th>
+                        <th>batchSize</th>
                         <th>Load</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% for (var i=0; i < questionModel.length; i++) { %>
+                    <% for (var i=0; i < questionModel.length; i++) { 
+                        var matchingIndex = -1;
+                        for (var j = 0; j < questionDetail.length; j++){
+                            if(questionDetail[j].modelName===questionModel[i]){
+                                matchingIndex = j;
+                                break;
+                            }
+                        }
+                        %>
                         <tr>
                             <td><%=questionModel[i]%><% if(questionLoaded===questionModel[i]){ %><i class="ri-check-line"></i><% } %></td>
-                            <td><%=questionModelDetail[i].rouge%></td>
-                            <td><%=questionModelDetail[i].epoch%></td>
+                            <td><%= matchingIndex !== -1 ? questionDetail[matchingIndex].rouge : '-' %></td>
+                            <td><%= matchingIndex !== -1 ? questionDetail[matchingIndex].epoch : '-' %></td>
+                            <td><%= matchingIndex !== -1 ? questionDetail[matchingIndex].batchSize : '-' %></td>
                             <td><a href="/ai/questionLoad/<%=questionModel[i]%>"><button class="detail-button">Load</button></a></td>
                             <td><a href="/ai/deleteQuestion/<%=questionModel[i]%>"><button class="detail-button">Delete</button></a></td>
                         </tr>
-                        <% } %>
+                    <% } %>
                 </tbody>
             </table>
             <form class="form-grid" action="/ai/questionModelTrain" method="post">
@@ -116,17 +142,17 @@
             <fieldset>
                 <form action="/admin/ai/updateAuto" method="post" class="checkbox-form">
                     <label class="checkbox-label">
-                      <input type="checkbox" name="questionModelAuto" value="1" <%= questionModelAuto === 1 ? 'checked' : '' %> />
+                      <input type="checkbox" name="emotionModelAuto" value="1" <%= emotionModelAuto === 1 ? 'checked' : '' %> />
                       <span>감정 분류 모델 자동학습</span>
                     </label>
                     <label class="checkbox-label">
-                      <input type="checkbox" name="emotionModelAuto" value="1" <%= emotionModelAuto === 1 ? 'checked' : '' %> />
-                      <span>의도 분류 모델 자동학습</span>
+                      <input type="checkbox" name="intentionModelAuto" value="1" <%= intentionModelAuto === 1 ? 'checked' : '' %> />
+                      <span>의도 파악 모델 자동학습</span>
                     </label>
                     <label class="checkbox-label">
-                      <input type="checkbox" name="intentionModelAuto" value="1" <%= intentionModelAuto === 1 ? 'checked' : '' %> />
-                      <span>질문지 생성 모델 자동학습</span>
-                    </label>
+                        <input type="checkbox" name="questionModelAuto" value="1" <%= questionModelAuto === 1 ? 'checked' : '' %> />
+                        <span>질문 생성 모델 자동학습</span>
+                      </label>
                     <button type="submit">자동 학습 설정 저장</button>
                   </form>
               </fieldset>
