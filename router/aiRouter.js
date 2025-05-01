@@ -29,10 +29,22 @@ router.get('/questionLoad/:modelName', (req, res)=>{
     ai.questionLoad(req, res);
 })
 
-//모델 삭제 요청
-router.get('/delete/:modelName', (req, res)=>{
-    logger.info(`GET /admin/ai/delete/${req.params.modelName}`);
-    ai.delete(req, res);
+//감정 분류 모델 삭제 요청
+router.get('/deleteEmotion/:modelName', (req, res)=>{
+    logger.info(`GET /admin/ai/deleteEmotion/${req.params.modelName}`);
+    ai.deleteEmotion(req, res);
+})
+
+//의도 분류 모델 삭제 요청
+router.get('/deleteIntention/:modelName', (req, res)=>{
+    logger.info(`GET /admin/ai/deleteIntention/${req.params.modelName}`);
+    ai.deleteIntention(req, res);
+})
+
+//질문 생성 모델 삭제 요청
+router.get('/deleteQuestion/:modelName', (req, res)=>{
+    logger.info(`GET /admin/ai/deleteQuestion/${req.params.modelName}`);
+    ai.deleteQuestion(req, res);
 })
 
 //감정 분류 모델 생성 요청
