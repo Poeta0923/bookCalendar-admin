@@ -5,12 +5,6 @@ const logger = require('../lib/logger');
 //lib 폴더의 root.js파일 연결
 var root = require('../lib/root');
 
-//'/' 요청 라우팅
-router.get('/', (req, res)=>{
-    logger.info(`GET /`);
-    root.home(req, res);
-})
-
 //'login' 버튼 클릭 시 요청 라우팅
 router.post('/login', (req, res)=>{
     logger.info(`POST /admin/login`);
@@ -24,8 +18,8 @@ router.get('/logout', (req, res)=>{
 })
 
 //'/main' 요청 라우팅
-router.get('/main', (req, res)=>{
-    logger.info(`GET /admin/main`);
+router.get('/', (req, res)=>{
+    logger.info(`GET /admin`);
     root.main(req, res);
 })
 
