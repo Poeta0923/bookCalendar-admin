@@ -18,7 +18,6 @@
                         <th>f1Score</th>
                         <th>epoch</th>
                         <th>dropOut</th>
-                        <th>batchSize</th>
                         <th>Load</th>
                         <th>Delete</th>
                     </tr>
@@ -27,10 +26,9 @@
                     <% for (var i=0; i < emotionModel.length; i++) { %>
                         <tr>
                             <td><%=emotionModel[i][0]%><% if(emotionLoaded===emotionModel[i][0]){ %><i class="ri-check-line"></i><% } %></td>
-                            <td><%=emotionScore[i]%></td>
-                            <td><%=emotionModel[i][1]%></td>
-                            <td><%=emotionModel[i][2]%></td>
-                            <td><%=emotionModel[i][3]%></td>
+                            <td><%=emotionModelDetail[i].f1</td>
+                            <td><%=emotionModelDetail[i].epoch%></td>
+                            <td><%=emotionModelDetail[i].dropOut%></td>
                             <td><a href="/ai/emotionLoad/<%=emotionModel[i][0]%>"><button class="detail-button">Load</button></a></td>
                             <td><a href="/ai/deleteEmtotion/<%=emotionModel[i][0]%>"><button class="detail-button">Delete</button></a></td>
                         </tr>
@@ -42,7 +40,6 @@
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
                     <input type="number" step="0.01" id="dropOut" name="dropOut" placeholder="Drop Out">
-                    <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
                     <button type="submit">Train Model</button>
                 </div>
             </form>
@@ -56,7 +53,6 @@
                         <th>accuracy</th>
                         <th>epoch</th>
                         <th>dropOut</th>
-                        <th>batchSize</th>
                         <th>Load</th>
                         <th>Delete</th>
                     </tr>
@@ -65,10 +61,9 @@
                     <% for (var i=0; i < intentionModel.length; i++) { %>
                         <tr>
                             <td><%=intentionModel[i][0]%><% if(intentionLoaded===intentionModel[i][0]){ %><i class="ri-check-line"></i><% } %></td>
-                            <td><%=intentionScore[i]%></td>
-                            <td><%=intentionModel[i][1]%></td>
-                            <td><%=intentionModel[i][2]%></td>
-                            <td><%=intentionModel[i][3]%></td>
+                            <td><%=intentionModelDetail[i].accuracy%></td>
+                            <td><%=intentionModelDetail[i].epoch%></td>
+                            <td><%=intentionModelDetail[i].dropOut%></td>
                             <td><a href="/ai/intentionLoad/<%=intentionModel[i][0]%>"><button class="detail-button">Load</button></a></td>
                             <td><a href="/ai/deleteIntention/<%=intentionModel[i][0]%>"><button class="detail-button">Delete</button></a></td>
                         </tr>
@@ -80,7 +75,6 @@
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
                     <input type="number" step="0.01" id="dropOut" name="dropOut" placeholder="Drop Out">
-                    <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
                     <button type="submit">Train Model</button>
                 </div>
             </form>
@@ -93,7 +87,6 @@
                         <th>Model</th>
                         <th>rouge</th>
                         <th>epoch</th>
-                        <th>batchSize</th>
                         <th>Load</th>
                         <th>Delete</th>
                     </tr>
@@ -102,9 +95,8 @@
                     <% for (var i=0; i < questionModel.length; i++) { %>
                         <tr>
                             <td><%=questionModel[i][0]%><% if(questionLoaded===questionModel[i][0]){ %><i class="ri-check-line"></i><% } %></td>
-                            <td><%=questionScore[i]%></td>
-                            <td><%=questionModel[i][1]%></td>
-                            <td><%=questionModel[i][2]%></td>
+                            <td><%=questionModelDetail[i].rouge%></td>
+                            <td><%=questionModelDetail[i].epoch%></td>
                             <td><a href="/ai/questionLoad/<%=questionModel[i][0]%>"><button class="detail-button">Load</button></a></td>
                             <td><a href="/ai/deleteQuestion/<%=questionModel[i][0]%>"><button class="detail-button">Delete</button></a></td>
                         </tr>
