@@ -683,3 +683,68 @@ fieldset {
   font-size: 16px;
   cursor: pointer;
 }
+
+.alter-container {
+  width: calc(100% - 50px); /* 부모 너비에서 좌우 마진 60px을 뺀 값으로 설정 */
+  height: 80%;
+  background-color: white; /* 흰색 배경 */
+  border-radius: 30px; /* 둥근 모서리 */
+  padding: 20px; /* 내부 여백 증가 (원하는 간격 크기로 조절) */
+  margin-right: 20px; /* 컨테이너 자체의 외부 여백 */
+  margin-bottom: 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  display: flex; /* Flexbox 컨테이너로 설정 */
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
+}
+
+.alter-form-wrapper {
+  display: flex;
+  flex-direction: column; /* 내부 요소들을 세로로 배치 */
+  align-items: center; /* 내부 요소들을 가로 방향 가운데 정렬 */
+  /* 필요에 따라 너비나 다른 스타일을 추가할 수 있습니다. */
+}
+
+.alter-form {
+  /* form 태그에 필요한 스타일 (예: 입력 필드 간 간격 등) */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 입력 필드 사이 간격 */
+  width: 80%; /* 폼 너비 조정 (선택 사항) */
+}
+
+.alter-form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.alter-form label {
+  margin-bottom: 5px;
+}
+
+.alter-form-wrapper button {
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 20px; /* 버튼 모서리를 더 둥글게 */
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 20px;
+  width: 100%; /* 버튼 너비를 입력 필드와 같게 */
+  box-sizing: border-box; /* padding이 width에 포함되도록 */
+}
+
+.alter-form-wrapper input[type="password"] {
+  width: 100%; /* 입력 필드 너비를 form에 맞춤 */
+  padding: 10px;
+  margin-bottom: 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  box-sizing: border-box;
+  font-size: 1em;
+  text-align: center; /* 입력 텍스트 가운데 정렬 */
+}

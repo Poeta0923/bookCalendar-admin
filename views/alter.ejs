@@ -1,0 +1,42 @@
+<div class="alter-container">
+    <div class="alter-form-wrapper">
+        <div><h1>비밀번호 변경</h1></div>
+        <form action="/admin/alter_process" method="post" id="passwordChangeForm" class="alter-form">
+            <div>
+                <input type="password" id="password" name="password" placeholder="기존 비밀번호" required>
+            </div>
+            <div>
+                <input type="password" id="newPassword" name="newPassword" placeholder="새로운 비밀번호" required>
+            </div>
+            <div>
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword" placeholder="새로운 비밀번호 확인" required>
+                <p id="passwordMismatch" style="color: red; display: none;">새로운 비밀번호가 일치하지 않습니다.</p>
+            </div>
+            <button type="submit">비밀번호 변경</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const passwordChangeForm = document.getElementById('passwordChangeForm');
+    const newPasswordInput = document.getElementById('newPassword');
+    const confirmNewPasswordInput = document.getElementById('confirmNewPassword');
+    const passwordMismatchMessage = document.getElementById('passwordMismatch');
+
+    passwordChangeForm.addEventListener('submit', function(event) {
+        if (newPasswordInput.value !== confirmNewPasswordInput.value) {
+            event.preventDefault(); // 폼 제출 막기
+            passwordMismatchMessage.style.display = 'block'; // 경고 메시지 표시
+        } else {
+            passwordMismatchMessage.style.display = 'none'; // 메시지 숨기기 (만약 이전에 표시되었었다면)
+        }
+    });
+
+    confirmNewPasswordInput.addEventListener('input', function() {
+        if (newPasswordInput.value !== confirmNewPasswordInput.value) {
+            passwordMismatchMessage.style.display = 'block';
+        } else {
+            passwordMismatchMessage.style.display = 'none';
+        }
+    });
+</script>

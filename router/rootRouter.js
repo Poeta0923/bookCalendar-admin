@@ -23,4 +23,15 @@ router.get('/', (req, res)=>{
     root.main(req, res);
 })
 
+//'/alter' 요청 라우팅
+router.get('/alter', (req, res)=>{
+    logger.info(`GET /admin/alter`);
+    root.alter(req, res);
+})
+
+router.post('/alter_process', (req, res)=>{
+    logger.info(`POST /admin/alter_process`);
+    root.alter_process(req, res);
+})
+
 module.exports = router;
