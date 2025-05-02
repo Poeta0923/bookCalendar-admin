@@ -38,7 +38,7 @@
                             <td><%= matchingIndex !== -1 ? emotionDetail[matchingIndex].epoch : '-' %></td>
                             <td><%= matchingIndex !== -1 ? emotionDetail[matchingIndex].dropOut : '-' %></td>
                             <td><a href="/ai/emotionLoad/<%=emotionModel[i]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteEmotion/<%=emotionModel[i]%>"><button class="detail-button">Delete</button></a></td>
+                            <td><a href="/ai/deleteEmotion/<%=emotionModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
@@ -48,7 +48,7 @@
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
                     <input type="number" step="0.01" id="dropOut" name="dropOut" placeholder="Drop Out">
-                    <button type="submit">Train Model</button>
+                    <button type="submit" onclick="return confirm('모델 훈련에는 시간이 소요됩니다. 모델이 완성되면 해당 페이지 새로고침 또는 재접속 시 보이게 됩니다.');">Train Model</button>
                 </div>
             </form>
         </div>
@@ -81,7 +81,7 @@
                             <td><%= matchingIndex !== -1 ? intentionDetail[matchingIndex].epoch : '-' %></td>
                             <td><%= matchingIndex !== -1 ? intentionDetail[matchingIndex].dropOut : '-' %></td>
                             <td><a href="/ai/intentionLoad/<%=intentionModel[i]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteIntention/<%=intentionModel[i]%>"><button class="detail-button">Delete</button></a></td>
+                            <td><a href="/ai/deleteIntention/<%=intentionModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
@@ -91,7 +91,7 @@
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
                     <input type="number" step="0.01" id="dropOut" name="dropOut" placeholder="Drop Out">
-                    <button type="submit">Train Model</button>
+                    <button type="submit" onclick="return confirm('모델 훈련에는 시간이 소요됩니다. 모델이 완성되면 해당 페이지 새로고침 또는 재접속 시 보이게 됩니다.');">Train Model</button>
                 </div>
             </form>
         </div>
@@ -124,7 +124,7 @@
                             <td><%= matchingIndex !== -1 ? questionDetail[matchingIndex].epoch : '-' %></td>
                             <td><%= matchingIndex !== -1 ? questionDetail[matchingIndex].batchSize : '-' %></td>
                             <td><a href="/ai/questionLoad/<%=questionModel[i]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteQuestion/<%=questionModel[i]%>"><button class="detail-button">Delete</button></a></td>
+                            <td><a href="/ai/deleteQuestion/<%=questionModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
@@ -134,7 +134,7 @@
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
                     <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
-                    <button type="submit">Train Model</button>
+                    <button type="submit" onclick="return confirm('모델 훈련에는 시간이 소요됩니다. 모델이 완성되면 해당 페이지 새로고침 또는 재접속 시 보이게 됩니다.');">Train Model</button>
                 </div>
             </form>
         </div>
@@ -153,8 +153,9 @@
                         <input type="checkbox" name="questionModelAuto" value="1" <%= questionModelAuto === 1 ? 'checked' : '' %> />
                         <span>질문 생성 모델 자동학습</span>
                       </label>
-                    <button type="submit">자동 학습 설정 저장</button>
+                    <button type="submit" class="alter-form-wrapper">자동학습 설정</button>
                   </form>
+                  <a href="/testModel"><button class="alter-form-wrapper" onclick="return confirm('현재 모델 성능 확인에는 시간이 소요됩니다. 확인이 끝나면 해당 페이지 새로고침 또는 재접속 시 보이게 됩니다.');">모델성능 확인</button></a>
               </fieldset>
         </div>
     </div>
