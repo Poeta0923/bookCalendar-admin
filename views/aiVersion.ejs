@@ -37,13 +37,13 @@
                             <td><%= matchingIndex !== -1 ? emotionDetail[matchingIndex].f1 : '-' %></td>
                             <td><%= matchingIndex !== -1 ? emotionDetail[matchingIndex].epoch : '-' %></td>
                             <td><%= matchingIndex !== -1 ? emotionDetail[matchingIndex].dropOut : '-' %></td>
-                            <td><a href="/ai/emotionLoad/<%=emotionModel[i]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteEmotion/<%=emotionModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
+                            <td><a href="/admin/ai/emotionLoad/<%=emotionModel[i]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/admin/ai/deleteEmotion/<%=emotionModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
             </table>
-            <form class="form-grid" action="/ai/emotionModelTrain" method="post">
+            <form class="form-grid" action="/admin/ai/emotionModelTrain" method="post">
                 <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
@@ -80,13 +80,13 @@
                             <td><%= matchingIndex !== -1 ? intentDetail[matchingIndex].accuracy : '-' %></td>
                             <td><%= matchingIndex !== -1 ? intentDetail[matchingIndex].epoch : '-' %></td>
                             <td><%= matchingIndex !== -1 ? intentDetail[matchingIndex].dropOut : '-' %></td>
-                            <td><a href="/ai/intentLoad/<%=intentModel[i]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteIntent/<%=intentModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
+                            <td><a href="/admin/ai/intentLoad/<%=intentModel[i]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/admin/ai/deleteIntent/<%=intentModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
             </table>
-            <form class="form-grid" action="/ai/intentModelTrain" method="post">
+            <form class="form-grid" action="/admin/ai/intentModelTrain" method="post">
                 <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
@@ -123,13 +123,13 @@
                             <td><%= matchingIndex !== -1 ? questionDetail[matchingIndex].rouge : '-' %></td>
                             <td><%= matchingIndex !== -1 ? questionDetail[matchingIndex].epoch : '-' %></td>
                             <td><%= matchingIndex !== -1 ? questionDetail[matchingIndex].batchSize : '-' %></td>
-                            <td><a href="/ai/questionLoad/<%=questionModel[i]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteQuestion/<%=questionModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
+                            <td><a href="/admin/ai/questionLoad/<%=questionModel[i]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/admin/ai/deleteQuestion/<%=questionModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
             </table>
-            <form class="form-grid" action="/ai/questionModelTrain" method="post">
+            <form class="form-grid" action="/admin/ai/questionModelTrain" method="post">
                 <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
@@ -155,7 +155,7 @@
                       </label>
                     <button type="submit" class="alter-form-wrapper">자동학습 설정</button>
                   </form>
-                  <a href="/testModel"><button class="alter-form-wrapper" onclick="return confirm('현재 모델 성능 확인에는 시간이 소요됩니다. 확인이 끝나면 해당 페이지 새로고침 또는 재접속 시 보이게 됩니다.');">모델성능 확인</button></a>
+                  <a href="/admin/testModel"><button class="alter-form-wrapper" onclick="return confirm('현재 모델 성능 확인에는 시간이 소요됩니다. 확인이 끝나면 해당 페이지 새로고침 또는 재접속 시 보이게 됩니다.');">모델성능 확인</button></a>
               </fieldset>
         </div>
     </div>
