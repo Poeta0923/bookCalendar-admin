@@ -18,9 +18,9 @@ router.get('/emotionLoad/:modelName', (req, res)=>{
 })
 
 //의도 분류 모델 선택 요청
-router.get('/intentionLoad/:modelName', (req, res)=>{
-    logger.info(`GET /admin/ai/intentionLoad/${req.params.modelName}`);
-    ai.intentionLoad(req, res);
+router.get('/intentLoad/:modelName', (req, res)=>{
+    logger.info(`GET /admin/ai/intentLoad/${req.params.modelName}`);
+    ai.intentLoad(req, res);
 })
 
 //질문 생성 모델 선택 요청
@@ -36,9 +36,9 @@ router.get('/deleteEmotion/:modelName', (req, res)=>{
 })
 
 //의도 분류 모델 삭제 요청
-router.get('/deleteIntention/:modelName', (req, res)=>{
-    logger.info(`GET /admin/ai/deleteIntention/${req.params.modelName}`);
-    ai.deleteIntention(req, res);
+router.get('/deleteIntent/:modelName', (req, res)=>{
+    logger.info(`GET /admin/ai/deleteIntent/${req.params.modelName}`);
+    ai.deleteIntent(req, res);
 })
 
 //질문 생성 모델 삭제 요청
@@ -54,9 +54,9 @@ router.post('/emotionModelTrain', (req, res)=>{
 })
 
 //의도 분류 모델 생성 요청
-router.post('/intentionModelTrain', (req, res)=>{
-    logger.info(`POST /intentionModelTrain`);
-    ai.intentionModelTrain(req, res);
+router.post('/intentModelTrain', (req, res)=>{
+    logger.info(`POST /intentModelTrain`);
+    ai.intentModelTrain(req, res);
 })
 
 //질문 생성 모델 생성 요청

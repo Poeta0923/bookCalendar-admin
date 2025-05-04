@@ -66,27 +66,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% for (var i=0; i < intentionModel.length; i++) { 
+                    <% for (var i=0; i < intentModel.length; i++) { 
                         var matchingIndex = -1;
-                        for (var j = 0; j < intentionDetail.length; j++){
-                            if(intentionDetail[j].modelName===intentionModel[i]){
+                        for (var j = 0; j < intentDetail.length; j++){
+                            if(intentDetail[j].modelName===intentModel[i]){
                                 matchingIndex = j;
                                 break;
                             }
                         }
                         %>
                         <tr>
-                            <td><%=intentionModel[i]%><% if(intentionLoaded===intentionModel[i]){ %><i class="ri-check-line"></i><% } %></td>
-                            <td><%= matchingIndex !== -1 ? intentionDetail[matchingIndex].accuracy : '-' %></td>
-                            <td><%= matchingIndex !== -1 ? intentionDetail[matchingIndex].epoch : '-' %></td>
-                            <td><%= matchingIndex !== -1 ? intentionDetail[matchingIndex].dropOut : '-' %></td>
-                            <td><a href="/ai/intentionLoad/<%=intentionModel[i]%>"><button class="detail-button">Load</button></a></td>
-                            <td><a href="/ai/deleteIntention/<%=intentionModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
+                            <td><%=intentModel[i]%><% if(intentLoaded===intentModel[i]){ %><i class="ri-check-line"></i><% } %></td>
+                            <td><%= matchingIndex !== -1 ? intentDetail[matchingIndex].accuracy : '-' %></td>
+                            <td><%= matchingIndex !== -1 ? intentDetail[matchingIndex].epoch : '-' %></td>
+                            <td><%= matchingIndex !== -1 ? intentDetail[matchingIndex].dropOut : '-' %></td>
+                            <td><a href="/ai/intentLoad/<%=intentModel[i]%>"><button class="detail-button">Load</button></a></td>
+                            <td><a href="/ai/deleteIntent/<%=intentModel[i]%>"><button class="detail-button" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</button></a></td>
                         </tr>
                     <% } %>
                 </tbody>
             </table>
-            <form class="form-grid" action="/ai/intentionModelTrain" method="post">
+            <form class="form-grid" action="/ai/intentModelTrain" method="post">
                 <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
@@ -146,7 +146,7 @@
                       <span>감정 분류 모델 자동학습</span>
                     </label>
                     <label class="checkbox-label">
-                      <input type="checkbox" name="intentionModelAuto" value="1" <%= intentionModelAuto === 1 ? 'checked' : '' %> />
+                      <input type="checkbox" name="intentModelAuto" value="1" <%= intentModelAuto === 1 ? 'checked' : '' %> />
                       <span>의도 파악 모델 자동학습</span>
                     </label>
                     <label class="checkbox-label">
