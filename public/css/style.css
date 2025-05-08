@@ -758,3 +758,8 @@ fieldset {
   font-size: 1em;
   cursor: pointer;
 }
+
+/* CSS 파일 (예: style.css) */
+.ai-container > div > canvas {
+  height: 300px !important; /* !important는 기존 스타일을 덮어쓰는 데 도움이 될 수 있습니다. */
+}

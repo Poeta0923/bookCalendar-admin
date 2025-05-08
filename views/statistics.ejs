@@ -1,0 +1,133 @@
+<div class="ai-body-container">
+    <div class="grid-container">
+        <div class="ai-container top-left">
+            <h1>최근 7개월 월별 <%=kind%> 현황</h1>
+            <div>
+                <canvas id="monthlyChart"></canvas>
+            </div>
+        </div>
+        <div class="ai-container top-right">
+            <h1>최근 7년간 연도별 게시물 수 현황</h1>
+            <div>
+                <canvas id="yearlyChart"></canvas>
+            </div>
+        </div>
+        <div class="ai-container bottom-left">
+            <h1>최근 7개월 월별 게시물 수 증가율</h1>
+            <div>
+                <canvas id="monthlyGrowthChart"></canvas>
+            </div>
+        </div>
+        <div class="ai-container bottom-right">
+            <h1>최근 7년간 연도별 게시물 수 증가율</h1>
+            <div>
+                <canvas id="yearlyGrowthChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // 월별 데이터 차트
+    const monthlyData = <%- JSON.stringify(monthlyData) %>;
+    const monthlyLabels = monthlyData.map(item => item.month);
+    const monthlyCounts = monthlyData.map(item => item.count);
+
+    const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+    const monthlyChart = new Chart(monthlyCtx, {
+        type: 'bar',
+        data: {
+            labels: monthlyLabels,
+            datasets: [{
+                label: '월별 데이터 수',
+                data: monthlyCounts,
+                backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true, title: { display: true, text: '데이터 수' } },
+                x: { title: { display: true, text: '월' } }
+            }
+        }
+    });
+
+    // 연도별 데이터 차트
+    const yearlyData = <%- JSON.stringify(yearlyData) %>;
+    const yearlyLabels = yearlyData.map(item => item.year);
+    const yearlyCounts = yearlyData.map(item => item.count);
+
+    const yearlyCtx = document.getElementById('yearlyChart').getContext('2d');
+    const yearlyChart = new Chart(yearlyCtx, {
+        type: 'bar',
+        data: {
+            labels: yearlyLabels,
+            datasets: [{
+                label: '연도별 데이터 수',
+                data: yearlyCounts,
+                backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true, title: { display: true, text: '데이터 수' } },
+                x: { title: { display: true, text: '연도' } }
+            }
+        }
+    });
+
+    // 월별 데이터 증가율 차트
+    const monthlyGrowthData = <%- JSON.stringify(monthlyGrowthData) %>;
+    const monthlyGrowthLabels = monthlyGrowthData.map(item => item.month);
+    const monthlyGrowthRates = monthlyGrowthData.map(item => item.monthly_growth_rate ? item.monthly_growth_rate.toFixed(2) : 0);
+
+    const monthlyGrowthCtx = document.getElementById('monthlyGrowthChart').getContext('2d');
+    const monthlyGrowthChart = new Chart(monthlyGrowthCtx, {
+        type: 'line',
+        data: {
+            labels: monthlyGrowthLabels,
+            datasets: [{
+                label: '월별 데이터 증가율 (%)',
+                data: monthlyGrowthRates,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: { title: { display: true, text: '증가율 (%)' } },
+                x: { title: { display: true, text: '월' } }
+            }
+        }
+    });
+
+    // 연도별 데이터 증가율 차트
+    const yearlyGrowthData = <%- JSON.stringify(yearlyGrowthData) %>;
+    const yearlyGrowthLabels = yearlyGrowthData.map(item => item.year);
+    const yearlyGrowthRates = yearlyGrowthData.map(item => item.yearly_growth_rate ? item.yearly_growth_rate.toFixed(2) : 0);
+
+    const yearlyGrowthCtx = document.getElementById('yearlyGrowthChart').getContext('2d');
+    const yearlyGrowthChart = new Chart(yearlyGrowthCtx, {
+        type: 'line',
+        data: {
+            labels: yearlyGrowthLabels,
+            datasets: [{
+                label: '연도별 데이터 증가율 (%)',
+                data: yearlyGrowthRates,
+                borderColor: 'rgba(153, 102, 255, 1)',
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: { title: { display: true, text: '증가율 (%)' } },
+                x: { title: { display: true, text: '연도' } }
+            }
+        }
+    });
+</script>
