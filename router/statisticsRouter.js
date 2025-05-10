@@ -30,4 +30,9 @@ router.get('/member', (req, res)=>{
     statistics.member(req, res);
 })
 
+router.get('/book', (req, res)=>{
+    logger.info(`GET /admin/statistics/book`);
+    statistics.book(req, res);
+})
+
 module.exports = router;
