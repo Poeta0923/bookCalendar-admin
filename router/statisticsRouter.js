@@ -3,36 +3,35 @@ const router = express.Router();
 const logger = require('../lib/logger');
 
 //lib 폴더의 statistics.js파일 연결
-var statistics = require('../lib/statistics');
+var book = require('../lib/statistics/book');
+var comment = require('../lib/statistics/comment');
+var member = require('../lib/statistics/member');
+var post = require('../lib/statistics/post');
+var review = require('../lib/statistics/review');
 
 router.get('/book', (req, res)=>{
     logger.info(`GET /admin/statistics/book`);
-    statistics.book(req, res);
+    book.book(req, res);
 })
 
 router.get('/review', (req, res)=>{
     logger.info(`GET /admin/statistics/review`);
-    statistics.review(req, res);
+    review.review(req, res);
 })
 
 router.get('/post', (req, res)=>{
     logger.info(`GET /admin/statistics/post`);
-    statistics.post(req, res);
+    post.post(req, res);
 })
 
 router.get('/comment', (req, res)=>{
     logger.info(`GET /admin/statistics/comment`);
-    statistics.comment(req, res);
+    comment.comment(req, res);
 })
 
 router.get('/member', (req, res)=>{
     logger.info(`GET /admin/statistics/member`);
-    statistics.member(req, res);
-})
-
-router.get('/book', (req, res)=>{
-    logger.info(`GET /admin/statistics/book`);
-    statistics.book(req, res);
+    member.member(req, res);
 })
 
 module.exports = router;

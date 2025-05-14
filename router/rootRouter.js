@@ -3,35 +3,38 @@ const router = express.Router();
 const logger = require('../lib/logger');
 
 //lib 폴더의 root.js파일 연결
-var root = require('../lib/root');
+var home = require('../lib/root/home');
+var main = require('../lib/root/main');
+var auth = require('../lib/root/auth');
+var alter = require('../lib/root/alter');
 
 //'login' 버튼 클릭 시 요청 라우팅
 router.post('/login', (req, res)=>{
     logger.info(`POST /admin/login`);
-    root.login(req, res);
+    auth.login(req, res);
 })
 
 //'/logout' 요청 라우팅
 router.get('/logout', (req, res)=>{
     logger.info(`GET /admin/logout`);
-    root.logout(req, res);
+    auth.logout(req, res);
 })
 
 //'/main' 요청 라우팅
 router.get('/', (req, res)=>{
     logger.info(`GET /admin`);
-    root.main(req, res);
+    main.main(req, res);
 })
 
 //'/alter' 요청 라우팅
 router.get('/alter', (req, res)=>{
     logger.info(`GET /admin/alter`);
-    root.alter(req, res);
+    alter.alter(req, res);
 })
 
 router.post('/alter_process', (req, res)=>{
     logger.info(`POST /admin/alter_process`);
-    root.alter_process(req, res);
+    alter.alter_process(req, res);
 })
 
 module.exports = router;
