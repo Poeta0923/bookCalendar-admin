@@ -8,9 +8,10 @@ const logger = require('./lib/logger');
 var MySqlStore = require('express-mysql-session')(session);
 var options = {
     host : 'localhost',
-    user : 'nodejs',
-    password : 'nodejs',
-    database : 'bookCalander'
+    port: 3307,
+    user : 'bookcalendar',
+    password : 'bookcalendar123',
+    database : 'bookcalendar'
 };
 
 var sessionStore = new MySqlStore(options)
@@ -35,7 +36,7 @@ var postRouter = require('./router/postRouter');
 var reportedPostRouter = require('./router/reportedPostRouter');
 var reportedCommentRouter = require('./router/reportedCommentRouter');
 var aiRouter = require('./router/aiRouter');
-/*var satisticsRouter = require('./router/satisticsRouter'); */
+var statisticsRouter = require('./router/statisticsRouter');
 
 //정적 파일들이 위치한 폴더 지정
 app.use(express.static('public'));
@@ -46,7 +47,7 @@ app.use('/admin/post', postRouter);
 app.use('/admin/reportedPost', reportedPostRouter);
 app.use('/admin/reportedComment', reportedCommentRouter);
 app.use('/admin/ai', aiRouter);
-/*app.use('/admin/satistics', satisticsRouter);*/
+app.use('/admin/statistics', statisticsRouter);
 
 //favicon 파일이 없기 때문에 브라우저가 요청 시 에러 처리.
 app.get('/favicon.ico', (req, res)=>res.writeHead(404));
