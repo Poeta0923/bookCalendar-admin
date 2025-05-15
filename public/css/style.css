@@ -208,6 +208,14 @@ th:first-child {
 th:last-child {
   border-radius: 0 20px 0 0; /* 좌상, 우상, 우하, 좌하 */
 }
+
+tr:first-child th:first-child {
+  background-color: #333;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px 20px 0 0;
+}
   
 /* 삭제 버튼 스타일 (선택 사항) */
 td button {
@@ -542,6 +550,8 @@ td button:hover {
     width: auto; /* 또는 width: unset; */ /* 명시적인 너비 설정 제거 */
     height: auto; /* 또는 height: unset; */ /* 명시적인 높이 설정 제거 */
     font-size: 1em;
+    overflow: auto; /* 내용이 넘치면 스크롤바를 자동으로 표시 */
+    cursor: grab; /* 드래그 가능함을 나타내는 커서 표시 */
   }
 
 .ai-container h1 {
