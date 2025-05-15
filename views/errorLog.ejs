@@ -1,0 +1,23 @@
+<h1 class="main-title">에러 기록</h1>
+
+<!--에러 로그에 항목이 존재할 경우 테이블 표시-->
+<% if(log.length !== 0){ %>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>errorLog</th>
+                </tr>
+            </thead>
+            <tnody>
+                <% for (var i = log.length - 1; i >= 0; i--){ %>
+                <tr>
+                    <td><%=log[i]%></td>
+                </tr>
+                <% } %>
+            </tnody>
+        </table>
+    </div>
+<% } else { %>
+    <p>자료가 없습니다.</p>
+<% } %>
