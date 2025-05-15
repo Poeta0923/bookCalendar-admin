@@ -9,6 +9,7 @@ var deleteAi = require('../lib/ai/delete');
 var train = require('../lib/ai/train');
 var update = require('../lib/ai/update');
 var test = require('../lib/ai/test');
+var errorLog = require('../lib/ai/errorLog');
 
 //AI 버전 관리 화면 요청
 router.get('/version', (req, res)=>{
@@ -80,6 +81,12 @@ router.post('/updateAuto', (req, res)=>{
 router.get('/testModel', (req, res)=>{
     logger.info(`get /testModel`);
     test.testModel(req, res);
+})
+
+//ai 오류 로그 요청
+router.get('/errorLog', (req, res)=>{
+    logger.info(`get /errorLog`);
+    errorLog.errorLog(req, res);
 })
 
 module.exports=router;
