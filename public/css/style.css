@@ -209,7 +209,7 @@ th:last-child {
   border-radius: 0 20px 0 0; /* 좌상, 우상, 우하, 좌하 */
 }
 
-tr:first-child th:first-child {
+#only-header {
   background-color: #333;
   color: white;
   padding: 8px 12px;
