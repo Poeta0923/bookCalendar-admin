@@ -763,3 +763,17 @@ fieldset {
 .ai-container > div > canvas {
   height: 300px !important; /* !important는 기존 스타일을 덮어쓰는 데 도움이 될 수 있습니다. */
 }
+
+.error-container {
+  width: calc(100% - 60px); /* 부모 너비에서 좌우 마진 40px을 뺀 값으로 설정 */
+  height: 80%;
+  background-color: white; /* 흰색 배경 */
+  border-radius: 30px; /* 둥근 모서리 */
+  padding: 20px; /* 내부 여백 증가 (원하는 간격 크기로 조절) */
+  margin-right: 20px; /* 컨테이너 자체의 외부 여백 및 가운데 정렬 */
+  margin-bottom: 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+
+  overflow: auto; /* 내용이 넘치면 스크롤바를 자동으로 표시 */
+  cursor: grab; /* 드래그 가능함을 나타내는 커서 표시 */
+}
