@@ -10,6 +10,11 @@ var train = require('../lib/ai/train');
 var update = require('../lib/ai/update');
 var test = require('../lib/ai/test');
 var errorLog = require('../lib/ai/errorLog');
+var data = require('../lib/ai/data');
+var detail = require('../lib/ai/detail');
+var dataDetail = require('../lib/ai/dataDetail');
+var deleteData = require('../lib/ai/deleteData');
+var dataLoad = require('../lib/ai/dataLoad');
 
 //AI 버전 관리 화면 요청
 router.get('/version', (req, res)=>{
@@ -87,6 +92,96 @@ router.get('/testModel', (req, res)=>{
 router.get('/errorLog', (req, res)=>{
     logger.info(`get /errorLog`);
     errorLog.errorLog(req, res);
+})
+
+//질문 생성 모델 데이터셋 목록 요청
+router.get('/questionData', (req, res)=>{
+    logger.info(`get /questionData/`);
+    data.questionData(req, res);
+})
+
+//의도 분류 모델 데이터셋 목록 요청
+router.get('/intentData', (req, res)=>{
+    logger.info(`get /intentData`);
+    data.intentData(req, res);
+})
+
+//감정 파악 모델 데이터셋 목록 요청
+router.get('/emotionData', (req, res)=>{
+    logger.info(`get /emotionData`);
+    data.emotionData(req, res);
+})
+
+//질문 생성 모델 데이터셋 상세 목록 요청
+router.get('/questionData/:selected/:currentPage', (req, res)=>{
+    logger.info(`get /questionData/${req.params.selected}/${req.params.currentPage}`);
+    detail.questionData(req, res);
+})
+
+//질문 생성 모델 데이터 상세 정보 요청
+router.get('/questionData/:selected/:currentPage/:dataId', (req, res)=>{
+    logger.info(`get /questionData/${req.params.selected}/${req.params.currentPage}/${req.params.dataId}`);
+    dataDetail.questionData(req, res);
+})
+
+//의도 파악 모델 데이터셋 상세 목록 요청
+router.get('/intentData/:selected/:currentPage', (req, res)=>{
+    logger.info(`get /intentData/${req.params.selected}/${req.params.currentPage}`);
+    detail.intentData(req, res);
+})
+
+//의도 파악 모델 데이터 상세 정보 요청
+router.get('/intentData/:selected/:currentPage/:dataId', (req, res)=>{
+    logger.info(`get /intentData/${req.params.selected}/${req.params.currentPage}/${req.params.dataId}`);
+    dataDetail.intentData(req, res);
+})
+
+//감정 분류 모델 데이터셋 상세 목록 요청
+router.get('/emotionData/:selected/:currentPage', (req, res)=>{
+    logger.info(`get /emotionData/${req.params.selected}/${req.params.currentPage}`);
+    detail.emotionData(req, res);
+})
+
+//감정 분류 모델 데이터 상세 정보 요청
+router.get('/emotionData/:selected/:currentPage/:dataId', (req, res)=>{
+    logger.info(`get /emotionData/${req.params.selected}/${req.params.currentPage}/${req.params.dataId}`);
+    dataDetail.emotionData(req, res);
+})
+
+//질문 생성 모델 데이터 삭제 요청
+router.get('/questionData/:selected/:currentPage/:dataId/deleteData', (req, res)=>{
+    logger.info(`get /questionData/${req.params.selected}/${req.params.currentPage}/${req.params.dataId}/deleteData`);
+    deleteData.questionData(req, res);
+})
+
+//의도 파악 모델 데이터 삭제 요청
+router.get('/intentData/:selected/:currentPage/:dataId/deleteData', (req, res)=>{
+    logger.info(`get /intentData/${req.params.selected}/${req.params.currentPage}/${req.params.dataId}/deleteData`);
+    deleteData.intentData(req, res);
+})
+
+//감정 분류 모델 데이터 삭제 요청
+router.get('/emotionData/:selected/:currentPage/:dataId/deleteData', (req, res)=>{
+    logger.info(`get /emotionData/${req.params.selected}/${req.params.currentPage}/${req.params.dataId}/deleteData`);
+    deleteData.emotionData(req, res);
+})
+
+//질문 생성 모델 데이터셋 선택 요청
+router.get('/questionData/:selected/load', (req, res)=>{
+    logger.info(`get /questionData/${req.params.selected}/load`);
+    dataLoad.questionData(req, res);
+})
+
+//의도 파악 모델 데이터셋 선택 요청
+router.get('/intentData/:selected/load', (req, res)=>{
+    logger.info(`get /intentData/${req.params.selected}/load`);
+    dataLoad.intentData(req, res);
+})
+
+//감정 분류 모델 데이터셋 선택 요청
+router.get('/emotionData/:selected/load', (req, res)=>{
+    logger.info(`get /emotionData/${req.params.selected}/load`);
+    dataLoad.emotionData(req, res);
 })
 
 module.exports=router;

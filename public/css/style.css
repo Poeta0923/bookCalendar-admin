@@ -551,7 +551,6 @@ td button:hover {
     height: auto; /* 또는 height: unset; */ /* 명시적인 높이 설정 제거 */
     font-size: 1em;
     overflow: auto; /* 내용이 넘치면 스크롤바를 자동으로 표시 */
-    cursor: grab; /* 드래그 가능함을 나타내는 커서 표시 */
   }
 
 .ai-container h1 {
@@ -785,5 +784,4 @@ fieldset {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 
   overflow: auto; /* 내용이 넘치면 스크롤바를 자동으로 표시 */
-  cursor: grab; /* 드래그 가능함을 나타내는 커서 표시 */
 }

@@ -103,7 +103,7 @@
                         <th>Model</th>
                         <th>rouge</th>
                         <th>epoch</th>
-                        <th>batchSize</th>
+                        <th>q_num</th>
                         <th>Load</th>
                         <th>Delete</th>
                     </tr>
@@ -133,7 +133,7 @@
                 <input type="text" id="modelName" name="modelName" placeholder="Model Name" style="grid-column: 1 / 4;">
                 <div class="input-group">
                     <input type="number" id="epoch" name="epoch" placeholder="Epoch">
-                    <input type="number" id="batchSize" name="batchSize" placeholder="Batch Size">
+                    <input type="number" id="batchSize" name="batchSize" placeholder="q_num">
                     <button type="submit" onclick="return confirm('모델 훈련에는 시간이 소요됩니다. 모델이 완성되면 해당 페이지 새로고침 또는 재접속 시 보이게 됩니다.');">Train Model</button>
                 </div>
             </form>

@@ -1,0 +1,29 @@
+<h1 class="main-title"><%=whatAi%></h1>
+
+<!--에러 로그에 항목이 존재할 경우 테이블 표시-->
+<% if(dataset.length !== 0){ %>
+    <div class="error-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>YYYY-MM</th>
+                    <th>loaded</th>
+                    <th>load</th>
+                    <th>상세보기</th>
+                </tr>
+            </thead>
+            <tnody>
+                <% for (var i = 0; i < dataset.length; i++){ %>
+                <tr>
+                    <td><%=dataset[i].formatted_date%></td>
+                    <td><% if (dataset[i].formatted_date===loaded){ %> <i class="ri-check-line"></i> <% } %></td>
+                    <td><a href="/admin/ai/<%=url%>/<%=dataset[i].formatted_date%>/load"><button class="detail-button">load</button></a></td>
+                    <td><a href="/admin/ai/<%=url%>/<%=dataset[i].formatted_date%>/1"><button class="detail-button">datas</button></a></td>
+                </tr>
+                <% } %>
+            </tnody>
+        </table>
+    </div>
+<% } else { %>
+    <p>자료가 없습니다.</p>
+<% } %>
