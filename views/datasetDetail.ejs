@@ -54,7 +54,7 @@
       <% if (dataDetail===true) { %>
         <p>dataId : <%=data[0].dateId%></p>
         <a href="/admin/ai/<%=url%>/<%=selected%>/<%=currentPage%>/<%=data[0].dataId%>/deleteData"><button class="delete-button" onclick="return confirm('정말로 삭제하시겠습니까?');">데이터 삭제</button></a>
-        <p><%= data[0].date %></p>
+        <p><%= data[0].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></p>
         <p>input : <%=data[0].input%></p>
         <p>output : <%=data[0].output%></p>
       <% } else { %>
