@@ -155,18 +155,19 @@ body {
 }
 
 .table-container {
-  width: calc(100% - 60px); /* 부모 너비에서 좌우 마진 40px을 뺀 값으로 설정 */
+  width: calc(100% - 20px); /* 부모 너비에서 좌우 마진 40px을 뺀 값으로 설정 */
   height: 70%;
   background-color: white; /* 흰색 배경 */
   border-radius: 30px; /* 둥근 모서리 */
   padding: 20px; /* 내부 여백 증가 (원하는 간격 크기로 조절) */
-  margin-right: 20px; /* 컨테이너 자체의 외부 여백 및 가운데 정렬 */
+
   margin-bottom: 50px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  overflow: auto;
 }
 
 .detail-container {
-  width: calc(100% - 60px); /* 부모 너비에서 좌우 마진 40px을 뺀 값으로 설정 */
+  width: calc(100% - 20px); /* 부모 너비에서 좌우 마진 40px을 뺀 값으로 설정 */
   min-height: 87%;
   background-color: white; /* 흰색 배경 */
   border-radius: 30px; /* 둥근 모서리 */
@@ -276,7 +277,7 @@ td button:hover {
   
 .left-panel {
     width: 50%;
-    padding-right: 20px;
+    padding-right: 5px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -285,7 +286,9 @@ td button:hover {
   
 .right-panel {
     width: 50%;
-    padding: 20px;
+    padding-left: 20px;
+    padding-top:20px;
+    padding-bottom:20px;
     box-sizing: border-box;
     border-left: 1px solid #ddd;
     display: flex;
@@ -774,12 +777,12 @@ fieldset {
 }
 
 .error-container {
-  width: calc(100% - 60px); /* 부모 너비에서 좌우 마진 40px을 뺀 값으로 설정 */
+  width: calc(100% - 20px); /* 부모 너비에서 좌우 마진 40px을 뺀 값으로 설정 */
   height: 80%;
   background-color: white; /* 흰색 배경 */
   border-radius: 30px; /* 둥근 모서리 */
   padding: 20px; /* 내부 여백 증가 (원하는 간격 크기로 조절) */
-  margin-right: 20px; /* 컨테이너 자체의 외부 여백 및 가운데 정렬 */
+
   margin-bottom: 50px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 
