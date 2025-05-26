@@ -526,7 +526,7 @@ td button:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    height: 100%; /* 부모 컨테이너의 높이에 맞춤 */
+    height: 95%; /* 부모 컨테이너의 높이에 맞춤 */
     width: 100%; /* 부모 컨테이너의 너비에 맞춤 */
     gap: 10px; /* ai-container 사이의 간격 (필요한 경우) */
     flex-shrink: 0;
@@ -534,27 +534,27 @@ td button:hover {
     margin-top: 20px;
   }
   
-  .ai-container {
+.ai-container {
+    /* 기존 스타일 유지 */
     background-color: #ffffff;
     border-radius: 30px;
-    /* margin: 10px; grid-container의 gap으로 간격 조절 권장 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column; /* 내부 요소들을 세로로 배치 */
-    justify-content: flex-start; /* 상하 기준 위로 정렬 */
-    align-items: flex-start; /* 좌우 기준 시작점부터 정렬 */
-    font-size: 20px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1em; /* 기존 font-size: 20px;와 겹쳐서 조정 */
     color: #333;
-    padding-top: 0;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    flex-shrink: 0;
-    width: auto; /* 또는 width: unset; */ /* 명시적인 너비 설정 제거 */
-    height: auto; /* 또는 height: unset; */ /* 명시적인 높이 설정 제거 */
-    font-size: 1em;
+    padding: 20px; /* padding-top:0, padding-right:20px; padding-bottom:20px; padding-left:20px;를 줄여서 */
+
+    /* ***** 이 부분이 핵심 수정 사항입니다 ***** */
+    max-height: 95%; /* 예시: 원하는 최대 높이 설정 */
     overflow: auto; /* 내용이 넘치면 스크롤바를 자동으로 표시 */
-  }
+
+    /* flex-shrink: 0; */ /* ai-container가 flex 아이템일 경우만 필요하며,
+                                            현재 Grid 아이템이므로 직접적인 역할은 적습니다.
+                                            Grid 아이템의 크기 조절은 주로 Grid 속성으로 합니다. */
+}
 
 .ai-container h1 {
     margin-bottom: 15px;
