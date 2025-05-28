@@ -8,9 +8,9 @@
       <table>
         <thead>
           <tr>
-            <th>detaId</th>
-            <th>date</th>
-            <th>detail</th>
+            <th>데이터 ID</th>
+            <th>생성일</th>
+            <th>상세</th>
           </tr>
         </thead>
 
@@ -23,7 +23,7 @@
             <td><%= datasets[i].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></td>
             <td>
               <div class="detail-form">
-                <a href="/admin/ai/<%=url%>/<%=selected%>/<%=currentPage%>/<%=datasets[i].dataId%>"><button class="detail-button">상세정보</button></a>
+                <a href="/admin/ai/<%=url%>/<%=selected%>/<%=currentPage%>/<%=datasets[i].dataId%>"><button class="detail-button">상세</button></a>
               </div>
             </td>
           </tr>
@@ -52,9 +52,9 @@
   <div class="right-panel">
     <div class="detail-container">
       <% if (dataDetail===true) { %>
-        <p>dataId : <%=data[0].dateId%></p>
+        <p>데이터ID : <%=data[0].dateId%></p>
         <a href="/admin/ai/<%=url%>/<%=selected%>/<%=currentPage%>/<%=data[0].dataId%>/deleteData"><button class="delete-button" onclick="return confirm('정말로 삭제하시겠습니까?');">데이터 삭제</button></a>
-        <p><%= data[0].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></p>
+        <p>데이터 생성일 : <%= data[0].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></p>
         <p>input : <%=data[0].input%></p>
         <p>output : <%=data[0].output%></p>
       <% } else { %>

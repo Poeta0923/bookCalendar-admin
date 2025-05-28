@@ -14,13 +14,13 @@
     <thead>
         <!--테이블 항목 <th> 태그는 항목 명-->
         <tr>
-          <th>detail</th>
-            <th>title</th>
-            <th>nickName</th>
-            <th>date</th>
-            <th>contents</th>
-            <th>reportCount</th>
-            <th>delete</th>
+          <th>게시물 상세</th>
+            <th>게시물 제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>내용</th>
+            <th>누적 신고 수</th>
+            <th>삭제</th>
         </tr>
     </thead>
 
@@ -34,7 +34,7 @@
             <!--게시물 확인 버튼 클릭 시 게시물 관리 페이지로 이동-->
             <td>
               <div class="detail-form">
-                <a href="/admin/post/1/<%=comment[i].postId%>"><button class="detail-button">게시물 상세정보</button></a>
+                <a href="/admin/post/1/<%=comment[i].postId%>"><button class="detail-button">게시물 상세</button></a>
               </div>
             </td>
             <td><%= comment[i].title %></td>
@@ -44,7 +44,7 @@
             <td><%= comment[i].reportCount %></td>
       
             <!--해당 행의 회원 삭제 요청 버튼. primary key로 지정된 commentId를 전달-->
-            <td><a href="/admin/reportedComment/delete/<%= comment[i].commentId %>"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button></a></td>
+            <td><a href="/admin/reportedComment/delete/<%= comment[i].commentId %>"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</button></a></td>
         </tr>
         <% } %>
     </tbody>

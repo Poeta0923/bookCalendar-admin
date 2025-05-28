@@ -28,10 +28,10 @@
       <thead>
         <!--테이블 항목 <th> 태그는 항목 명-->
         <tr>
-          <th>detail</th>
-          <th>title</th>
-          <th>nickName</th>
-          <th>date</th>
+          <th>상세</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>작성일</th>
         </tr>
       </thead>
   
@@ -51,7 +51,7 @@
               <% if (requestIsSearch===true){ %>
                 <form action="/admin/reportedPost/search/<%=currentPage%>/<%=post[i].postId%>" method="post">
                   <div class="detail-form">
-                      <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="detail-button">상세정보</button>
+                      <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="detail-button">상세</button>
                   </div>
                 </form>
               <% } 
@@ -59,7 +59,7 @@
               <!--신고 게시물 관리 페이지에서 검색 결과가 아닐 경우-->
               else { %>
                 <div class="detail-form">
-                  <a href="/admin/reportedPost/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
+                  <a href="/admin/reportedPost/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세</button></a>
                 </div>
               <% } %>
             <% } 
@@ -71,7 +71,7 @@
               <% if (requestIsSearch===true){ %>
                 <form action="/admin/post/search/<%=currentPage%>/<%=post[i].postId%>" method="post">
                   <div class="detail-form">
-                      <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="detail-button">상세정보</button>
+                      <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="detail-button">상세</button>
                   </div>
                 </form>
               <% } 
@@ -79,7 +79,7 @@
               <!--게시물 관리 페이지에서 검색 결과가 아닐 경우-->
               else { %>
                 <div class="detail-form">
-                  <a href="/admin/post/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세정보</button></a>
+                  <a href="/admin/post/<%=currentPage%>/<%=post[i].postId%>"><button class="detail-button">상세</button></a>
                 </div>
               <% } %>
             <% } %>
@@ -187,20 +187,20 @@
 
 
       <p>작성자 : <%= postData[0].nickName %></p>
-      <p>date : <%= postData[0].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></p>
-      <p>reportCount : <%= postData[0].reportCount %></p>
-      <p>contents : <%= postData[0].contents %></p>
+      <p>작성일 : <%= postData[0].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></p>
+      <p>누적 신고 수 : <%= postData[0].reportCount %></p>
+      <p>본문 : <%= postData[0].contents %></p>
       <% if(comment.length!==0){ %>
       
       <table>
         <thead>
             <!--테이블 항목 <th> 태그는 항목 명-->
             <tr>
-                <th>nickName</th>
-                <th>date</th>
-                <th>contents</th>
-                <th>reportCount</th>
-                <th>delete</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>댓글 내용</th>
+                <th>신고</th>
+                <th>삭제</th>
             </tr>
         </thead>
     
@@ -223,13 +223,13 @@
                     <!--신고 게시물 관리 페이지의 검색 결과일 경우-->
                     <% if (requestIsSearch===true){ %>
                       <form action="/admin/reportedPost/search/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment" method="post">
-                        <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button>
+                        <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</button>
                       </form>
                     <% } 
 
                     <!--신고 게시물 관리 페이지에서 검색 결과가 아닐 경우-->
                     else { %>
-                      <a href="/admin/reportedPost/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button></a>
+                      <a href="/admin/reportedPost/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</button></a>
                     <% } %>
                   <% } 
 
@@ -239,13 +239,13 @@
                     <!--게시물 관리 페이지의 검색 결과일 경우-->
                     <% if (requestIsSearch===true){ %>
                       <form action="/admin/post/search/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment" method="post">
-                        <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="comment-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button>
+                        <input type="hidden" name="searchTerm" value="<%=searchTerm%>"><button type="submit" class="comment-button" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</button>
                       </form>
                     <% } 
               
                     <!--게시물 관리 페이지에서 검색 결과가 아닐 경우-->
                     else { %>
-                      <a href="/admin/post/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">댓글 삭제</button></a>
+                      <a href="/admin/post/<%=currentPage%>/<%=postData[0].postId%>/<%=comment[i].commentId%>/deleteComment"><button class="table-button" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</button></a>
                     <% } %>
                   <% } %>
                 </td>

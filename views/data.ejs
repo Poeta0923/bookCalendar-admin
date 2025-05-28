@@ -6,9 +6,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>YYYY-MM</th>
-                    <th>loaded</th>
-                    <th>load</th>
+                    <th>데이터셋 누적기간</th>
+                    <th>선택여부</th>
+                    <th>선택</th>
                     <th>상세보기</th>
                 </tr>
             </thead>
@@ -17,8 +17,8 @@
                 <tr>
                     <td><%=dataset[i].formatted_date%></td>
                     <td><% if (dataset[i].formatted_date===loaded){ %> <i class="ri-check-line"></i> <% } %></td>
-                    <td><a href="/admin/ai/<%=url%>/<%=dataset[i].formatted_date%>/load"><button class="detail-button">load</button></a></td>
-                    <td><a href="/admin/ai/<%=url%>/<%=dataset[i].formatted_date%>/1"><button class="detail-button">datas</button></a></td>
+                    <td><a href="/admin/ai/<%=url%>/<%=dataset[i].formatted_date%>/load"><button class="detail-button">선택</button></a></td>
+                    <td><a href="/admin/ai/<%=url%>/<%=dataset[i].formatted_date%>/1"><button class="detail-button">데이터셋 상세</button></a></td>
                 </tr>
                 <% } %>
             </tnody>
