@@ -207,7 +207,7 @@
         <!--<tr> 태그는 행, <td> 태그는 데이터. comment.js에서 context로 전달된 comment 테이블의 요소들을 데이터가 끝날 때까지 삽입-->
         <tbody>
             <!--페이징 기능 로직-->
-            <% for(var i = start; i < comment.length; i++){ %>
+            <% for(var i = 0; i < comment.length; i++){ %>
             <tr>
                 <td><%= comment[i].nickName %></td>
                 <td><%= comment[i].date.toLocaleDateString('en-CA').replace(/\//g, '-') %></td>
