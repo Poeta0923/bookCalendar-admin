@@ -198,6 +198,7 @@ th {
   color: white;
   padding: 8px 12px;
   border: none;
+  white-space: nowrap;
 }
 
 /* 첫 번째 th에 왼쪽 둥근 모서리 적용 */
